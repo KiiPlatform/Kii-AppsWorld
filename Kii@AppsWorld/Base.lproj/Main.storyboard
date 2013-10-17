@@ -99,10 +99,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="This si something" translatesAutoresizingMaskIntoConstraints="NO" id="J8m-5z-NRW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="289"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="289" id="aXX-br-fnk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mkg-a7-nNZ" firstAttribute="top" secondItem="tbO-D6-BuG" secondAttribute="bottom" id="ASt-UC-pKR"/>
+                            <constraint firstItem="J8m-5z-NRW" firstAttribute="top" secondItem="CZq-oB-y4T" secondAttribute="bottom" id="IhJ-s6-BQh"/>
                             <constraint firstItem="xZR-Ym-hHo" firstAttribute="leading" secondItem="3F1-RC-5EX" secondAttribute="leading" id="PDw-sZ-kcH"/>
                             <constraint firstAttribute="trailing" secondItem="xZR-Ym-hHo" secondAttribute="trailing" id="nVs-ih-Av0"/>
                             <constraint firstItem="mkg-a7-nNZ" firstAttribute="top" secondItem="tbO-D6-BuG" secondAttribute="bottom" id="sDk-8B-oIY"/>
@@ -111,7 +122,10 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="composeView" destination="J8m-5z-NRW" id="6p0-f5-boA"/>
+                        <outlet property="confirmButton" destination="blv-p9-UDg" id="R8s-PW-5Ue"/>
                         <outlet property="contentView" destination="xZR-Ym-hHo" id="ye7-XG-igc"/>
+                        <outlet property="declineButton" destination="MfG-Xl-t8f" id="Kcf-tE-b6f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MFB-uC-Sde" userLabel="First Responder" sceneMemberID="firstResponder"/>

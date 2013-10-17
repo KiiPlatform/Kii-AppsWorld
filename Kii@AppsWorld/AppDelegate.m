@@ -18,7 +18,11 @@
     
     [Kii beginWithID:@"fa71e7e2"
               andKey:@"70577e03f949a31615ecd8c1241fcee8"];
-
+    
+    NSError *err;
+    [KiiUser authenticateSynchronous:@"chris" withPassword:@"password" andError:&err];
+    NSLog(@"Error: %@", err);
+    
     return YES;
 }
 							
