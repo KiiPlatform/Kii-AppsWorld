@@ -1,0 +1,908 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CA60A0CA180EDC2C00C69DFC /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0C9180EDC2C00C69DFC /* calendar.png */; };
+		CA60A0CD180EDC7900C69DFC /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0CC180EDC7900C69DFC /* calendar@2x.png */; };
+		CA60A0D0180EDD2C00C69DFC /* feed.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0CE180EDD2C00C69DFC /* feed.png */; };
+		CA60A0D1180EDD2C00C69DFC /* feed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0CF180EDD2C00C69DFC /* feed@2x.png */; };
+		CA60A0D4180EDEC200C69DFC /* contacts.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0D2180EDEC200C69DFC /* contacts.png */; };
+		CA60A0D5180EDEC200C69DFC /* contacts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0D3180EDEC200C69DFC /* contacts@2x.png */; };
+		CA60A0D8180EDF2100C69DFC /* nearby.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0D6180EDF2100C69DFC /* nearby.png */; };
+		CA60A0D9180EDF2100C69DFC /* nearby@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0D7180EDF2100C69DFC /* nearby@2x.png */; };
+		CAA2AE551807AA0500F5288F /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2AE541807AA0500F5288F /* ScheduleViewController.m */; };
+		CAA2AE581807B8C800F5288F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2AE571807B8C800F5288F /* FeedViewController.m */; };
+		CAA2AE5E1807BA7600F5288F /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2AE5D1807BA7600F5288F /* ContactsViewController.m */; };
+		CAC7D41B1810314E00045737 /* SessionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC7D41A1810314E00045737 /* SessionDetailViewController.m */; };
+		CAD80000180F3A6800FEA608 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD8FFFF180F3A6800FEA608 /* MobileCoreServices.framework */; };
+		CAD80002180F3A6D00FEA608 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD80001180F3A6D00FEA608 /* Accounts.framework */; };
+		CAD80004180F3A7300FEA608 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD80003180F3A7300FEA608 /* Twitter.framework */; };
+		CAD8009C180F3B3D00FEA608 /* KTAppRater.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80031180F3B3D00FEA608 /* KTAppRater.m */; };
+		CAD8009D180F3B3D00FEA608 /* kt_login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD80034180F3B3D00FEA608 /* kt_login_bg.png */; };
+		CAD8009E180F3B3D00FEA608 /* kt_login_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD80035180F3B3D00FEA608 /* kt_login_bg@2x.png */; };
+		CAD8009F180F3B3D00FEA608 /* kt_login_close.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD80036180F3B3D00FEA608 /* kt_login_close.png */; };
+		CAD800A0180F3B3D00FEA608 /* kt_login_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD80037180F3B3D00FEA608 /* kt_login_close@2x.png */; };
+		CAD800A1180F3B3D00FEA608 /* kt_login_kii_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD80038180F3B3D00FEA608 /* kt_login_kii_logo.png */; };
+		CAD800A2180F3B3D00FEA608 /* kt_login_kii_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD80039180F3B3D00FEA608 /* kt_login_kii_logo@2x.png */; };
+		CAD800A3180F3B3D00FEA608 /* KTForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8003B180F3B3D00FEA608 /* KTForgotPasswordViewController.m */; };
+		CAD800A4180F3B3D00FEA608 /* KTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8003D180F3B3D00FEA608 /* KTLoginViewController.m */; };
+		CAD800A5180F3B3D00FEA608 /* KTRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8003F180F3B3D00FEA608 /* KTRegistrationViewController.m */; };
+		CAD800A6180F3B3D00FEA608 /* CKRefreshArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80042180F3B3D00FEA608 /* CKRefreshArrowView.m */; };
+		CAD800A7180F3B3D00FEA608 /* KTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80044180F3B3D00FEA608 /* KTTableViewController.m */; };
+		CAD800A8180F3B3D00FEA608 /* KTAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80048180F3B3D00FEA608 /* KTAlert.m */; };
+		CAD800A9180F3B3D00FEA608 /* KTAlertBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8004B180F3B3D00FEA608 /* KTAlertBar.m */; };
+		CAD800AA180F3B3D00FEA608 /* KTAlertToast.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8004D180F3B3D00FEA608 /* KTAlertToast.m */; };
+		CAD800AB180F3B3D00FEA608 /* KTButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80050180F3B3D00FEA608 /* KTButton.m */; };
+		CAD800AC180F3B3D00FEA608 /* KTCircularProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80053180F3B3D00FEA608 /* KTCircularProgressIndicator.m */; };
+		CAD800AD180F3B3D00FEA608 /* KTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80056180F3B3D00FEA608 /* KTImageView.m */; };
+		CAD800AE180F3B3D00FEA608 /* failure-indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD80059180F3B3D00FEA608 /* failure-indicator.png */; };
+		CAD800AF180F3B3D00FEA608 /* failure-indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD8005A180F3B3D00FEA608 /* failure-indicator@2x.png */; };
+		CAD800B0180F3B3D00FEA608 /* success-indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD8005B180F3B3D00FEA608 /* success-indicator.png */; };
+		CAD800B1180F3B3D00FEA608 /* success-indicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAD8005C180F3B3D00FEA608 /* success-indicator@2x.png */; };
+		CAD800B2180F3B3D00FEA608 /* KTLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8005E180F3B3D00FEA608 /* KTLoader.m */; };
+		CAD800B3180F3B3D00FEA608 /* KTProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80061180F3B3D00FEA608 /* KTProgressIndicator.m */; };
+		CAD800B4180F3B3D00FEA608 /* KTTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80064180F3B3D00FEA608 /* KTTextField.m */; };
+		CAD800B5180F3B3D00FEA608 /* NSMutableArray+KTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8006A180F3B3D00FEA608 /* NSMutableArray+KTUtilities.m */; };
+		CAD800B6180F3B3D00FEA608 /* NSString+KTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8006D180F3B3D00FEA608 /* NSString+KTUtilities.m */; };
+		CAD800B7180F3B3D00FEA608 /* UIColor+KTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80070180F3B3D00FEA608 /* UIColor+KTUtilities.m */; };
+		CAD800B8180F3B3D00FEA608 /* UIImage+KTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80073180F3B3D00FEA608 /* UIImage+KTUtilities.m */; };
+		CAD800B9180F3B3D00FEA608 /* UIView+KTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80076180F3B3D00FEA608 /* UIView+KTUtilities.m */; };
+		CAD800BA180F3B3D00FEA608 /* KTNetworkingUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD80078180F3B3D00FEA608 /* KTNetworkingUtilities.m */; };
+		CAD8FFFE180F3A0800FEA608 /* KiiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD8FFFD180F3A0800FEA608 /* KiiSDK.framework */; };
+		CAEE8EDB18036ACA0091B22A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEE8EDA18036ACA0091B22A /* Foundation.framework */; };
+		CAEE8EDD18036ACA0091B22A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEE8EDC18036ACA0091B22A /* CoreGraphics.framework */; };
+		CAEE8EDF18036ACA0091B22A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEE8EDE18036ACA0091B22A /* UIKit.framework */; };
+		CAEE8EE518036ACA0091B22A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAEE8EE318036ACA0091B22A /* InfoPlist.strings */; };
+		CAEE8EE718036ACA0091B22A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEE8EE618036ACA0091B22A /* main.m */; };
+		CAEE8EEB18036ACA0091B22A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEE8EEA18036ACA0091B22A /* AppDelegate.m */; };
+		CAEE8EEE18036ACA0091B22A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAEE8EEC18036ACA0091B22A /* Main.storyboard */; };
+		CAEE8EF618036ACA0091B22A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAEE8EF518036ACA0091B22A /* Images.xcassets */; };
+		CAEE8EFD18036ACA0091B22A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEE8EFC18036ACA0091B22A /* XCTest.framework */; };
+		CAEE8EFE18036ACA0091B22A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEE8EDA18036ACA0091B22A /* Foundation.framework */; };
+		CAEE8EFF18036ACA0091B22A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEE8EDE18036ACA0091B22A /* UIKit.framework */; };
+		CAEE8F0718036ACA0091B22A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAEE8F0518036ACA0091B22A /* InfoPlist.strings */; };
+		CAEE8F0918036ACA0091B22A /* Kii_AppsWorldTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAEE8F0818036ACA0091B22A /* Kii_AppsWorldTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAEE8F0018036ACA0091B22A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAEE8ECF18036ACA0091B22A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAEE8ED618036ACA0091B22A;
+			remoteInfo = "Kii@AppsWorld";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CA60A0C9180EDC2C00C69DFC /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		CA60A0CC180EDC7900C69DFC /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
+		CA60A0CE180EDD2C00C69DFC /* feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feed.png; sourceTree = "<group>"; };
+		CA60A0CF180EDD2C00C69DFC /* feed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed@2x.png"; sourceTree = "<group>"; };
+		CA60A0D2180EDEC200C69DFC /* contacts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contacts.png; sourceTree = "<group>"; };
+		CA60A0D3180EDEC200C69DFC /* contacts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts@2x.png"; sourceTree = "<group>"; };
+		CA60A0D6180EDF2100C69DFC /* nearby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nearby.png; sourceTree = "<group>"; };
+		CA60A0D7180EDF2100C69DFC /* nearby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nearby@2x.png"; sourceTree = "<group>"; };
+		CAA2AE531807AA0500F5288F /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		CAA2AE541807AA0500F5288F /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		CAA2AE561807B8C800F5288F /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		CAA2AE571807B8C800F5288F /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		CAA2AE5C1807BA7600F5288F /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		CAA2AE5D1807BA7600F5288F /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		CAC7D4191810314E00045737 /* SessionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetailViewController.h; sourceTree = "<group>"; };
+		CAC7D41A1810314E00045737 /* SessionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetailViewController.m; sourceTree = "<group>"; };
+		CAD80001180F3A6D00FEA608 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		CAD80003180F3A7300FEA608 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		CAD8002D180F3B3D00FEA608 /* KiiToolkit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KiiToolkit.h; sourceTree = "<group>"; };
+		CAD80030180F3B3D00FEA608 /* KTAppRater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAppRater.h; sourceTree = "<group>"; };
+		CAD80031180F3B3D00FEA608 /* KTAppRater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAppRater.m; sourceTree = "<group>"; };
+		CAD80034180F3B3D00FEA608 /* kt_login_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kt_login_bg.png; sourceTree = "<group>"; };
+		CAD80035180F3B3D00FEA608 /* kt_login_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kt_login_bg@2x.png"; sourceTree = "<group>"; };
+		CAD80036180F3B3D00FEA608 /* kt_login_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kt_login_close.png; sourceTree = "<group>"; };
+		CAD80037180F3B3D00FEA608 /* kt_login_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kt_login_close@2x.png"; sourceTree = "<group>"; };
+		CAD80038180F3B3D00FEA608 /* kt_login_kii_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kt_login_kii_logo.png; sourceTree = "<group>"; };
+		CAD80039180F3B3D00FEA608 /* kt_login_kii_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kt_login_kii_logo@2x.png"; sourceTree = "<group>"; };
+		CAD8003A180F3B3D00FEA608 /* KTForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTForgotPasswordViewController.h; sourceTree = "<group>"; };
+		CAD8003B180F3B3D00FEA608 /* KTForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTForgotPasswordViewController.m; sourceTree = "<group>"; };
+		CAD8003C180F3B3D00FEA608 /* KTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTLoginViewController.h; sourceTree = "<group>"; };
+		CAD8003D180F3B3D00FEA608 /* KTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTLoginViewController.m; sourceTree = "<group>"; };
+		CAD8003E180F3B3D00FEA608 /* KTRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTRegistrationViewController.h; sourceTree = "<group>"; };
+		CAD8003F180F3B3D00FEA608 /* KTRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTRegistrationViewController.m; sourceTree = "<group>"; };
+		CAD80041180F3B3D00FEA608 /* CKRefreshArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKRefreshArrowView.h; sourceTree = "<group>"; };
+		CAD80042180F3B3D00FEA608 /* CKRefreshArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKRefreshArrowView.m; sourceTree = "<group>"; };
+		CAD80043180F3B3D00FEA608 /* KTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTableViewController.h; sourceTree = "<group>"; };
+		CAD80044180F3B3D00FEA608 /* KTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTableViewController.m; sourceTree = "<group>"; };
+		CAD80047180F3B3D00FEA608 /* KTAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAlert.h; sourceTree = "<group>"; };
+		CAD80048180F3B3D00FEA608 /* KTAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAlert.m; sourceTree = "<group>"; };
+		CAD8004A180F3B3D00FEA608 /* KTAlertBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAlertBar.h; sourceTree = "<group>"; };
+		CAD8004B180F3B3D00FEA608 /* KTAlertBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAlertBar.m; sourceTree = "<group>"; };
+		CAD8004C180F3B3D00FEA608 /* KTAlertToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAlertToast.h; sourceTree = "<group>"; };
+		CAD8004D180F3B3D00FEA608 /* KTAlertToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAlertToast.m; sourceTree = "<group>"; };
+		CAD8004F180F3B3D00FEA608 /* KTButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTButton.h; sourceTree = "<group>"; };
+		CAD80050180F3B3D00FEA608 /* KTButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTButton.m; sourceTree = "<group>"; };
+		CAD80052180F3B3D00FEA608 /* KTCircularProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTCircularProgressIndicator.h; sourceTree = "<group>"; };
+		CAD80053180F3B3D00FEA608 /* KTCircularProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTCircularProgressIndicator.m; sourceTree = "<group>"; };
+		CAD80055180F3B3D00FEA608 /* KTImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTImageView.h; sourceTree = "<group>"; };
+		CAD80056180F3B3D00FEA608 /* KTImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTImageView.m; sourceTree = "<group>"; };
+		CAD80059180F3B3D00FEA608 /* failure-indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failure-indicator.png"; sourceTree = "<group>"; };
+		CAD8005A180F3B3D00FEA608 /* failure-indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "failure-indicator@2x.png"; sourceTree = "<group>"; };
+		CAD8005B180F3B3D00FEA608 /* success-indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success-indicator.png"; sourceTree = "<group>"; };
+		CAD8005C180F3B3D00FEA608 /* success-indicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success-indicator@2x.png"; sourceTree = "<group>"; };
+		CAD8005D180F3B3D00FEA608 /* KTLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTLoader.h; sourceTree = "<group>"; };
+		CAD8005E180F3B3D00FEA608 /* KTLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTLoader.m; sourceTree = "<group>"; };
+		CAD80060180F3B3D00FEA608 /* KTProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTProgressIndicator.h; sourceTree = "<group>"; };
+		CAD80061180F3B3D00FEA608 /* KTProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTProgressIndicator.m; sourceTree = "<group>"; };
+		CAD80063180F3B3D00FEA608 /* KTTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTextField.h; sourceTree = "<group>"; };
+		CAD80064180F3B3D00FEA608 /* KTTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTextField.m; sourceTree = "<group>"; };
+		CAD80065180F3B3D00FEA608 /* KTUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTUI.h; sourceTree = "<group>"; };
+		CAD80069180F3B3D00FEA608 /* NSMutableArray+KTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+KTUtilities.h"; sourceTree = "<group>"; };
+		CAD8006A180F3B3D00FEA608 /* NSMutableArray+KTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+KTUtilities.m"; sourceTree = "<group>"; };
+		CAD8006C180F3B3D00FEA608 /* NSString+KTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KTUtilities.h"; sourceTree = "<group>"; };
+		CAD8006D180F3B3D00FEA608 /* NSString+KTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KTUtilities.m"; sourceTree = "<group>"; };
+		CAD8006F180F3B3D00FEA608 /* UIColor+KTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KTUtilities.h"; sourceTree = "<group>"; };
+		CAD80070180F3B3D00FEA608 /* UIColor+KTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+KTUtilities.m"; sourceTree = "<group>"; };
+		CAD80072180F3B3D00FEA608 /* UIImage+KTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KTUtilities.h"; sourceTree = "<group>"; };
+		CAD80073180F3B3D00FEA608 /* UIImage+KTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KTUtilities.m"; sourceTree = "<group>"; };
+		CAD80075180F3B3D00FEA608 /* UIView+KTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+KTUtilities.h"; sourceTree = "<group>"; };
+		CAD80076180F3B3D00FEA608 /* UIView+KTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+KTUtilities.m"; sourceTree = "<group>"; };
+		CAD80077180F3B3D00FEA608 /* KTNetworkingUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTNetworkingUtilities.h; sourceTree = "<group>"; };
+		CAD80078180F3B3D00FEA608 /* KTNetworkingUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTNetworkingUtilities.m; sourceTree = "<group>"; };
+		CAD80079180F3B3D00FEA608 /* KTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTUtilities.h; sourceTree = "<group>"; };
+		CAD8FFFD180F3A0800FEA608 /* KiiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KiiSDK.framework; sourceTree = "<group>"; };
+		CAD8FFFF180F3A6800FEA608 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CAEE8ED718036ACA0091B22A /* Kii@AppsWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kii@AppsWorld.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAEE8EDA18036ACA0091B22A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CAEE8EDC18036ACA0091B22A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CAEE8EDE18036ACA0091B22A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CAEE8EE218036ACA0091B22A /* Kii@AppsWorld-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kii@AppsWorld-Info.plist"; sourceTree = "<group>"; };
+		CAEE8EE418036ACA0091B22A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CAEE8EE618036ACA0091B22A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CAEE8EE818036ACA0091B22A /* Kii@AppsWorld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kii@AppsWorld-Prefix.pch"; sourceTree = "<group>"; };
+		CAEE8EE918036ACA0091B22A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CAEE8EEA18036ACA0091B22A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CAEE8EED18036ACA0091B22A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CAEE8EF518036ACA0091B22A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CAEE8EFB18036ACA0091B22A /* Kii@AppsWorldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kii@AppsWorldTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAEE8EFC18036ACA0091B22A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CAEE8F0418036ACA0091B22A /* Kii@AppsWorldTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kii@AppsWorldTests-Info.plist"; sourceTree = "<group>"; };
+		CAEE8F0618036ACA0091B22A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CAEE8F0818036ACA0091B22A /* Kii_AppsWorldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kii_AppsWorldTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CAEE8ED418036ACA0091B22A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAD80004180F3A7300FEA608 /* Twitter.framework in Frameworks */,
+				CAD80002180F3A6D00FEA608 /* Accounts.framework in Frameworks */,
+				CAD80000180F3A6800FEA608 /* MobileCoreServices.framework in Frameworks */,
+				CAEE8EDD18036ACA0091B22A /* CoreGraphics.framework in Frameworks */,
+				CAEE8EDF18036ACA0091B22A /* UIKit.framework in Frameworks */,
+				CAEE8EDB18036ACA0091B22A /* Foundation.framework in Frameworks */,
+				CAD8FFFE180F3A0800FEA608 /* KiiSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAEE8EF818036ACA0091B22A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAEE8EFD18036ACA0091B22A /* XCTest.framework in Frameworks */,
+				CAEE8EFF18036ACA0091B22A /* UIKit.framework in Frameworks */,
+				CAEE8EFE18036ACA0091B22A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CA60A0CB180EDC3100C69DFC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CA60A0D6180EDF2100C69DFC /* nearby.png */,
+				CA60A0D7180EDF2100C69DFC /* nearby@2x.png */,
+				CA60A0D2180EDEC200C69DFC /* contacts.png */,
+				CA60A0D3180EDEC200C69DFC /* contacts@2x.png */,
+				CA60A0CE180EDD2C00C69DFC /* feed.png */,
+				CA60A0CF180EDD2C00C69DFC /* feed@2x.png */,
+				CA60A0CC180EDC7900C69DFC /* calendar@2x.png */,
+				CA60A0C9180EDC2C00C69DFC /* calendar.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		CAD80006180F3B3D00FEA608 /* KiiToolkit-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CAD8002D180F3B3D00FEA608 /* KiiToolkit.h */,
+				CAD8002F180F3B3D00FEA608 /* KTAppRater */,
+				CAD80032180F3B3D00FEA608 /* KTLoginViewController */,
+				CAD80040180F3B3D00FEA608 /* KTTableViewController */,
+				CAD80045180F3B3D00FEA608 /* KTUI */,
+				CAD80066180F3B3D00FEA608 /* KTUtilities */,
+			);
+			name = "KiiToolkit-iOS";
+			path = "Kii@AppsWorld/KiiToolkit-iOS";
+			sourceTree = "<group>";
+		};
+		CAD8002F180F3B3D00FEA608 /* KTAppRater */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80030180F3B3D00FEA608 /* KTAppRater.h */,
+				CAD80031180F3B3D00FEA608 /* KTAppRater.m */,
+			);
+			path = KTAppRater;
+			sourceTree = "<group>";
+		};
+		CAD80032180F3B3D00FEA608 /* KTLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80033180F3B3D00FEA608 /* images */,
+				CAD8003A180F3B3D00FEA608 /* KTForgotPasswordViewController.h */,
+				CAD8003B180F3B3D00FEA608 /* KTForgotPasswordViewController.m */,
+				CAD8003C180F3B3D00FEA608 /* KTLoginViewController.h */,
+				CAD8003D180F3B3D00FEA608 /* KTLoginViewController.m */,
+				CAD8003E180F3B3D00FEA608 /* KTRegistrationViewController.h */,
+				CAD8003F180F3B3D00FEA608 /* KTRegistrationViewController.m */,
+			);
+			path = KTLoginViewController;
+			sourceTree = "<group>";
+		};
+		CAD80033180F3B3D00FEA608 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80034180F3B3D00FEA608 /* kt_login_bg.png */,
+				CAD80035180F3B3D00FEA608 /* kt_login_bg@2x.png */,
+				CAD80036180F3B3D00FEA608 /* kt_login_close.png */,
+				CAD80037180F3B3D00FEA608 /* kt_login_close@2x.png */,
+				CAD80038180F3B3D00FEA608 /* kt_login_kii_logo.png */,
+				CAD80039180F3B3D00FEA608 /* kt_login_kii_logo@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		CAD80040180F3B3D00FEA608 /* KTTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80041180F3B3D00FEA608 /* CKRefreshArrowView.h */,
+				CAD80042180F3B3D00FEA608 /* CKRefreshArrowView.m */,
+				CAD80043180F3B3D00FEA608 /* KTTableViewController.h */,
+				CAD80044180F3B3D00FEA608 /* KTTableViewController.m */,
+			);
+			path = KTTableViewController;
+			sourceTree = "<group>";
+		};
+		CAD80045180F3B3D00FEA608 /* KTUI */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80046180F3B3D00FEA608 /* KTAlert */,
+				CAD8004E180F3B3D00FEA608 /* KTButton */,
+				CAD80051180F3B3D00FEA608 /* KTCircularProgressIndicator */,
+				CAD80054180F3B3D00FEA608 /* KTImageView */,
+				CAD80057180F3B3D00FEA608 /* KTLoader */,
+				CAD8005F180F3B3D00FEA608 /* KTProgressBar */,
+				CAD80062180F3B3D00FEA608 /* KTTextField */,
+				CAD80065180F3B3D00FEA608 /* KTUI.h */,
+			);
+			path = KTUI;
+			sourceTree = "<group>";
+		};
+		CAD80046180F3B3D00FEA608 /* KTAlert */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80047180F3B3D00FEA608 /* KTAlert.h */,
+				CAD80048180F3B3D00FEA608 /* KTAlert.m */,
+				CAD80049180F3B3D00FEA608 /* KTAlertType */,
+			);
+			path = KTAlert;
+			sourceTree = "<group>";
+		};
+		CAD80049180F3B3D00FEA608 /* KTAlertType */ = {
+			isa = PBXGroup;
+			children = (
+				CAD8004A180F3B3D00FEA608 /* KTAlertBar.h */,
+				CAD8004B180F3B3D00FEA608 /* KTAlertBar.m */,
+				CAD8004C180F3B3D00FEA608 /* KTAlertToast.h */,
+				CAD8004D180F3B3D00FEA608 /* KTAlertToast.m */,
+			);
+			path = KTAlertType;
+			sourceTree = "<group>";
+		};
+		CAD8004E180F3B3D00FEA608 /* KTButton */ = {
+			isa = PBXGroup;
+			children = (
+				CAD8004F180F3B3D00FEA608 /* KTButton.h */,
+				CAD80050180F3B3D00FEA608 /* KTButton.m */,
+			);
+			path = KTButton;
+			sourceTree = "<group>";
+		};
+		CAD80051180F3B3D00FEA608 /* KTCircularProgressIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80052180F3B3D00FEA608 /* KTCircularProgressIndicator.h */,
+				CAD80053180F3B3D00FEA608 /* KTCircularProgressIndicator.m */,
+			);
+			path = KTCircularProgressIndicator;
+			sourceTree = "<group>";
+		};
+		CAD80054180F3B3D00FEA608 /* KTImageView */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80055180F3B3D00FEA608 /* KTImageView.h */,
+				CAD80056180F3B3D00FEA608 /* KTImageView.m */,
+			);
+			path = KTImageView;
+			sourceTree = "<group>";
+		};
+		CAD80057180F3B3D00FEA608 /* KTLoader */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80058180F3B3D00FEA608 /* images */,
+				CAD8005D180F3B3D00FEA608 /* KTLoader.h */,
+				CAD8005E180F3B3D00FEA608 /* KTLoader.m */,
+			);
+			path = KTLoader;
+			sourceTree = "<group>";
+		};
+		CAD80058180F3B3D00FEA608 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80059180F3B3D00FEA608 /* failure-indicator.png */,
+				CAD8005A180F3B3D00FEA608 /* failure-indicator@2x.png */,
+				CAD8005B180F3B3D00FEA608 /* success-indicator.png */,
+				CAD8005C180F3B3D00FEA608 /* success-indicator@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		CAD8005F180F3B3D00FEA608 /* KTProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80060180F3B3D00FEA608 /* KTProgressIndicator.h */,
+				CAD80061180F3B3D00FEA608 /* KTProgressIndicator.m */,
+			);
+			path = KTProgressBar;
+			sourceTree = "<group>";
+		};
+		CAD80062180F3B3D00FEA608 /* KTTextField */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80063180F3B3D00FEA608 /* KTTextField.h */,
+				CAD80064180F3B3D00FEA608 /* KTTextField.m */,
+			);
+			path = KTTextField;
+			sourceTree = "<group>";
+		};
+		CAD80066180F3B3D00FEA608 /* KTUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80067180F3B3D00FEA608 /* Categories */,
+				CAD80077180F3B3D00FEA608 /* KTNetworkingUtilities.h */,
+				CAD80078180F3B3D00FEA608 /* KTNetworkingUtilities.m */,
+				CAD80079180F3B3D00FEA608 /* KTUtilities.h */,
+			);
+			path = KTUtilities;
+			sourceTree = "<group>";
+		};
+		CAD80067180F3B3D00FEA608 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80068180F3B3D00FEA608 /* NSMutableArray */,
+				CAD8006B180F3B3D00FEA608 /* NSString */,
+				CAD8006E180F3B3D00FEA608 /* UIColor */,
+				CAD80071180F3B3D00FEA608 /* UIImage */,
+				CAD80074180F3B3D00FEA608 /* UIView */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CAD80068180F3B3D00FEA608 /* NSMutableArray */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80069180F3B3D00FEA608 /* NSMutableArray+KTUtilities.h */,
+				CAD8006A180F3B3D00FEA608 /* NSMutableArray+KTUtilities.m */,
+			);
+			path = NSMutableArray;
+			sourceTree = "<group>";
+		};
+		CAD8006B180F3B3D00FEA608 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				CAD8006C180F3B3D00FEA608 /* NSString+KTUtilities.h */,
+				CAD8006D180F3B3D00FEA608 /* NSString+KTUtilities.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		CAD8006E180F3B3D00FEA608 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				CAD8006F180F3B3D00FEA608 /* UIColor+KTUtilities.h */,
+				CAD80070180F3B3D00FEA608 /* UIColor+KTUtilities.m */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		CAD80071180F3B3D00FEA608 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80072180F3B3D00FEA608 /* UIImage+KTUtilities.h */,
+				CAD80073180F3B3D00FEA608 /* UIImage+KTUtilities.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		CAD80074180F3B3D00FEA608 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80075180F3B3D00FEA608 /* UIView+KTUtilities.h */,
+				CAD80076180F3B3D00FEA608 /* UIView+KTUtilities.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		CAEE8ECE18036ACA0091B22A = {
+			isa = PBXGroup;
+			children = (
+				CAD80006180F3B3D00FEA608 /* KiiToolkit-iOS */,
+				CAEE8EE018036ACA0091B22A /* Kii@AppsWorld */,
+				CAEE8F0218036ACA0091B22A /* Kii@AppsWorldTests */,
+				CAEE8ED918036ACA0091B22A /* Frameworks */,
+				CAEE8ED818036ACA0091B22A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CAEE8ED818036ACA0091B22A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CAEE8ED718036ACA0091B22A /* Kii@AppsWorld.app */,
+				CAEE8EFB18036ACA0091B22A /* Kii@AppsWorldTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CAEE8ED918036ACA0091B22A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAD80003180F3A7300FEA608 /* Twitter.framework */,
+				CAD80001180F3A6D00FEA608 /* Accounts.framework */,
+				CAD8FFFF180F3A6800FEA608 /* MobileCoreServices.framework */,
+				CAD8FFFD180F3A0800FEA608 /* KiiSDK.framework */,
+				CAEE8EDA18036ACA0091B22A /* Foundation.framework */,
+				CAEE8EDC18036ACA0091B22A /* CoreGraphics.framework */,
+				CAEE8EDE18036ACA0091B22A /* UIKit.framework */,
+				CAEE8EFC18036ACA0091B22A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CAEE8EE018036ACA0091B22A /* Kii@AppsWorld */ = {
+			isa = PBXGroup;
+			children = (
+				CAEE8EE918036ACA0091B22A /* AppDelegate.h */,
+				CAEE8EEA18036ACA0091B22A /* AppDelegate.m */,
+				CAA2AE531807AA0500F5288F /* ScheduleViewController.h */,
+				CAA2AE541807AA0500F5288F /* ScheduleViewController.m */,
+				CAC7D4191810314E00045737 /* SessionDetailViewController.h */,
+				CAC7D41A1810314E00045737 /* SessionDetailViewController.m */,
+				CAA2AE561807B8C800F5288F /* FeedViewController.h */,
+				CAA2AE571807B8C800F5288F /* FeedViewController.m */,
+				CAA2AE5C1807BA7600F5288F /* ContactsViewController.h */,
+				CAA2AE5D1807BA7600F5288F /* ContactsViewController.m */,
+				CAEE8EEC18036ACA0091B22A /* Main.storyboard */,
+				CAEE8EF518036ACA0091B22A /* Images.xcassets */,
+				CAEE8EE118036ACA0091B22A /* Supporting Files */,
+			);
+			path = "Kii@AppsWorld";
+			sourceTree = "<group>";
+		};
+		CAEE8EE118036ACA0091B22A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CA60A0CB180EDC3100C69DFC /* images */,
+				CAEE8EE218036ACA0091B22A /* Kii@AppsWorld-Info.plist */,
+				CAEE8EE318036ACA0091B22A /* InfoPlist.strings */,
+				CAEE8EE618036ACA0091B22A /* main.m */,
+				CAEE8EE818036ACA0091B22A /* Kii@AppsWorld-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CAEE8F0218036ACA0091B22A /* Kii@AppsWorldTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAEE8F0818036ACA0091B22A /* Kii_AppsWorldTests.m */,
+				CAEE8F0318036ACA0091B22A /* Supporting Files */,
+			);
+			path = "Kii@AppsWorldTests";
+			sourceTree = "<group>";
+		};
+		CAEE8F0318036ACA0091B22A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CAEE8F0418036ACA0091B22A /* Kii@AppsWorldTests-Info.plist */,
+				CAEE8F0518036ACA0091B22A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CAEE8ED618036ACA0091B22A /* Kii@AppsWorld */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAEE8F0C18036ACA0091B22A /* Build configuration list for PBXNativeTarget "Kii@AppsWorld" */;
+			buildPhases = (
+				CAEE8ED318036ACA0091B22A /* Sources */,
+				CAEE8ED418036ACA0091B22A /* Frameworks */,
+				CAEE8ED518036ACA0091B22A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kii@AppsWorld";
+			productName = "Kii@AppsWorld";
+			productReference = CAEE8ED718036ACA0091B22A /* Kii@AppsWorld.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CAEE8EFA18036ACA0091B22A /* Kii@AppsWorldTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAEE8F0F18036ACA0091B22A /* Build configuration list for PBXNativeTarget "Kii@AppsWorldTests" */;
+			buildPhases = (
+				CAEE8EF718036ACA0091B22A /* Sources */,
+				CAEE8EF818036ACA0091B22A /* Frameworks */,
+				CAEE8EF918036ACA0091B22A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAEE8F0118036ACA0091B22A /* PBXTargetDependency */,
+			);
+			name = "Kii@AppsWorldTests";
+			productName = "Kii@AppsWorldTests";
+			productReference = CAEE8EFB18036ACA0091B22A /* Kii@AppsWorldTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CAEE8ECF18036ACA0091B22A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Kii Corporation";
+				TargetAttributes = {
+					CAEE8EFA18036ACA0091B22A = {
+						TestTargetID = CAEE8ED618036ACA0091B22A;
+					};
+				};
+			};
+			buildConfigurationList = CAEE8ED218036ACA0091B22A /* Build configuration list for PBXProject "Kii@AppsWorld" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CAEE8ECE18036ACA0091B22A;
+			productRefGroup = CAEE8ED818036ACA0091B22A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CAEE8ED618036ACA0091B22A /* Kii@AppsWorld */,
+				CAEE8EFA18036ACA0091B22A /* Kii@AppsWorldTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CAEE8ED518036ACA0091B22A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAD800B1180F3B3D00FEA608 /* success-indicator@2x.png in Resources */,
+				CAD8009E180F3B3D00FEA608 /* kt_login_bg@2x.png in Resources */,
+				CA60A0D5180EDEC200C69DFC /* contacts@2x.png in Resources */,
+				CAD8009F180F3B3D00FEA608 /* kt_login_close.png in Resources */,
+				CAEE8EF618036ACA0091B22A /* Images.xcassets in Resources */,
+				CAD800AF180F3B3D00FEA608 /* failure-indicator@2x.png in Resources */,
+				CAD800AE180F3B3D00FEA608 /* failure-indicator.png in Resources */,
+				CA60A0CA180EDC2C00C69DFC /* calendar.png in Resources */,
+				CAD800A2180F3B3D00FEA608 /* kt_login_kii_logo@2x.png in Resources */,
+				CAEE8EE518036ACA0091B22A /* InfoPlist.strings in Resources */,
+				CAD800A0180F3B3D00FEA608 /* kt_login_close@2x.png in Resources */,
+				CAEE8EEE18036ACA0091B22A /* Main.storyboard in Resources */,
+				CA60A0D1180EDD2C00C69DFC /* feed@2x.png in Resources */,
+				CAD800A1180F3B3D00FEA608 /* kt_login_kii_logo.png in Resources */,
+				CAD8009D180F3B3D00FEA608 /* kt_login_bg.png in Resources */,
+				CA60A0D8180EDF2100C69DFC /* nearby.png in Resources */,
+				CA60A0CD180EDC7900C69DFC /* calendar@2x.png in Resources */,
+				CAD800B0180F3B3D00FEA608 /* success-indicator.png in Resources */,
+				CA60A0D9180EDF2100C69DFC /* nearby@2x.png in Resources */,
+				CA60A0D4180EDEC200C69DFC /* contacts.png in Resources */,
+				CA60A0D0180EDD2C00C69DFC /* feed.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAEE8EF918036ACA0091B22A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAEE8F0718036ACA0091B22A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CAEE8ED318036ACA0091B22A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAC7D41B1810314E00045737 /* SessionDetailViewController.m in Sources */,
+				CAD800A3180F3B3D00FEA608 /* KTForgotPasswordViewController.m in Sources */,
+				CAD800AA180F3B3D00FEA608 /* KTAlertToast.m in Sources */,
+				CAD800A4180F3B3D00FEA608 /* KTLoginViewController.m in Sources */,
+				CAD800A9180F3B3D00FEA608 /* KTAlertBar.m in Sources */,
+				CAD800A6180F3B3D00FEA608 /* CKRefreshArrowView.m in Sources */,
+				CAD800BA180F3B3D00FEA608 /* KTNetworkingUtilities.m in Sources */,
+				CAD800B3180F3B3D00FEA608 /* KTProgressIndicator.m in Sources */,
+				CAD800B5180F3B3D00FEA608 /* NSMutableArray+KTUtilities.m in Sources */,
+				CAD800B2180F3B3D00FEA608 /* KTLoader.m in Sources */,
+				CAD800A8180F3B3D00FEA608 /* KTAlert.m in Sources */,
+				CAD800B6180F3B3D00FEA608 /* NSString+KTUtilities.m in Sources */,
+				CAD800B4180F3B3D00FEA608 /* KTTextField.m in Sources */,
+				CAEE8EEB18036ACA0091B22A /* AppDelegate.m in Sources */,
+				CAD800AD180F3B3D00FEA608 /* KTImageView.m in Sources */,
+				CAA2AE551807AA0500F5288F /* ScheduleViewController.m in Sources */,
+				CAA2AE5E1807BA7600F5288F /* ContactsViewController.m in Sources */,
+				CAD800B8180F3B3D00FEA608 /* UIImage+KTUtilities.m in Sources */,
+				CAD800B7180F3B3D00FEA608 /* UIColor+KTUtilities.m in Sources */,
+				CAA2AE581807B8C800F5288F /* FeedViewController.m in Sources */,
+				CAD800AB180F3B3D00FEA608 /* KTButton.m in Sources */,
+				CAD800A5180F3B3D00FEA608 /* KTRegistrationViewController.m in Sources */,
+				CAD800A7180F3B3D00FEA608 /* KTTableViewController.m in Sources */,
+				CAEE8EE718036ACA0091B22A /* main.m in Sources */,
+				CAD800AC180F3B3D00FEA608 /* KTCircularProgressIndicator.m in Sources */,
+				CAD800B9180F3B3D00FEA608 /* UIView+KTUtilities.m in Sources */,
+				CAD8009C180F3B3D00FEA608 /* KTAppRater.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAEE8EF718036ACA0091B22A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAEE8F0918036ACA0091B22A /* Kii_AppsWorldTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAEE8F0118036ACA0091B22A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAEE8ED618036ACA0091B22A /* Kii@AppsWorld */;
+			targetProxy = CAEE8F0018036ACA0091B22A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CAEE8EE318036ACA0091B22A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAEE8EE418036ACA0091B22A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CAEE8EEC18036ACA0091B22A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAEE8EED18036ACA0091B22A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CAEE8F0518036ACA0091B22A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CAEE8F0618036ACA0091B22A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CAEE8F0A18036ACA0091B22A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CAEE8F0B18036ACA0091B22A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CAEE8F0D18036ACA0091B22A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Beauchamp/Code/Kii/Kii@AppsWorld",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kii@AppsWorld/Kii@AppsWorld-Prefix.pch";
+				INFOPLIST_FILE = "Kii@AppsWorld/Kii@AppsWorld-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CAEE8F0E18036ACA0091B22A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Beauchamp/Code/Kii/Kii@AppsWorld",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kii@AppsWorld/Kii@AppsWorld-Prefix.pch";
+				INFOPLIST_FILE = "Kii@AppsWorld/Kii@AppsWorld-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CAEE8F1018036ACA0091B22A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kii@AppsWorld.app/Kii@AppsWorld";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kii@AppsWorld/Kii@AppsWorld-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Kii@AppsWorldTests/Kii@AppsWorldTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		CAEE8F1118036ACA0091B22A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kii@AppsWorld.app/Kii@AppsWorld";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kii@AppsWorld/Kii@AppsWorld-Prefix.pch";
+				INFOPLIST_FILE = "Kii@AppsWorldTests/Kii@AppsWorldTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CAEE8ED218036ACA0091B22A /* Build configuration list for PBXProject "Kii@AppsWorld" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAEE8F0A18036ACA0091B22A /* Debug */,
+				CAEE8F0B18036ACA0091B22A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAEE8F0C18036ACA0091B22A /* Build configuration list for PBXNativeTarget "Kii@AppsWorld" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAEE8F0D18036ACA0091B22A /* Debug */,
+				CAEE8F0E18036ACA0091B22A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAEE8F0F18036ACA0091B22A /* Build configuration list for PBXNativeTarget "Kii@AppsWorldTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAEE8F1018036ACA0091B22A /* Debug */,
+				CAEE8F1118036ACA0091B22A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CAEE8ECF18036ACA0091B22A /* Project object */;
+}
