@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactsViewController : UITableViewController
+#import "KiiToolkit.h"
+
+@interface ContactsViewController : KTTableViewController
+
+- (IBAction) toggleEditing:(id)sender;
 
 @end
