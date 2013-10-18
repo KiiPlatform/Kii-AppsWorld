@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA4772B6181146960040F3AD /* NSDate+KTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4772B5181146960040F3AD /* NSDate+KTUtilities.m */; };
+		CA4772BA181147630040F3AD /* NSArray+KTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4772B9181147630040F3AD /* NSArray+KTUtilities.m */; };
 		CA60A0CA180EDC2C00C69DFC /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0C9180EDC2C00C69DFC /* calendar.png */; };
 		CA60A0CD180EDC7900C69DFC /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0CC180EDC7900C69DFC /* calendar@2x.png */; };
 		CA60A0D0180EDD2C00C69DFC /* feed.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0CE180EDD2C00C69DFC /* feed.png */; };
@@ -80,6 +82,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA4772B4181146960040F3AD /* NSDate+KTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+KTUtilities.h"; sourceTree = "<group>"; };
+		CA4772B5181146960040F3AD /* NSDate+KTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+KTUtilities.m"; sourceTree = "<group>"; };
+		CA4772B8181147630040F3AD /* NSArray+KTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+KTUtilities.h"; path = "NSArray/NSArray+KTUtilities.h"; sourceTree = "<group>"; };
+		CA4772B9181147630040F3AD /* NSArray+KTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+KTUtilities.m"; path = "NSArray/NSArray+KTUtilities.m"; sourceTree = "<group>"; };
 		CA60A0C9180EDC2C00C69DFC /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		CA60A0CC180EDC7900C69DFC /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
 		CA60A0CE180EDD2C00C69DFC /* feed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feed.png; sourceTree = "<group>"; };
@@ -202,6 +208,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA4772B3181146960040F3AD /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				CA4772B4181146960040F3AD /* NSDate+KTUtilities.h */,
+				CA4772B5181146960040F3AD /* NSDate+KTUtilities.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		CA4772B71811474E0040F3AD /* NSArray */ = {
+			isa = PBXGroup;
+			children = (
+				CA4772B8181147630040F3AD /* NSArray+KTUtilities.h */,
+				CA4772B9181147630040F3AD /* NSArray+KTUtilities.m */,
+			);
+			name = NSArray;
+			sourceTree = "<group>";
+		};
 		CA60A0CB180EDC3100C69DFC /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +418,8 @@
 		CAD80067180F3B3D00FEA608 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CA4772B71811474E0040F3AD /* NSArray */,
+				CA4772B3181146960040F3AD /* NSDate */,
 				CAD80068180F3B3D00FEA608 /* NSMutableArray */,
 				CAD8006B180F3B3D00FEA608 /* NSString */,
 				CAD8006E180F3B3D00FEA608 /* UIColor */,
@@ -660,11 +686,13 @@
 				CAD800B2180F3B3D00FEA608 /* KTLoader.m in Sources */,
 				CAD800A8180F3B3D00FEA608 /* KTAlert.m in Sources */,
 				CAD800B6180F3B3D00FEA608 /* NSString+KTUtilities.m in Sources */,
+				CA4772B6181146960040F3AD /* NSDate+KTUtilities.m in Sources */,
 				CAD800B4180F3B3D00FEA608 /* KTTextField.m in Sources */,
 				CAEE8EEB18036ACA0091B22A /* AppDelegate.m in Sources */,
 				CAD800AD180F3B3D00FEA608 /* KTImageView.m in Sources */,
 				CAA2AE551807AA0500F5288F /* ScheduleViewController.m in Sources */,
 				CAA2AE5E1807BA7600F5288F /* ContactsViewController.m in Sources */,
+				CA4772BA181147630040F3AD /* NSArray+KTUtilities.m in Sources */,
 				CAD800B8180F3B3D00FEA608 /* UIImage+KTUtilities.m in Sources */,
 				CAD800B7180F3B3D00FEA608 /* UIColor+KTUtilities.m in Sources */,
 				CAA2AE581807B8C800F5288F /* FeedViewController.m in Sources */,

@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "KiiToolkit.h"
+
 @interface FeedViewController : UIViewController
 <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UITextView *composeView;
 @property (nonatomic, strong) IBOutlet UINavigationItem *navItem;
+@property (nonatomic, strong) IBOutlet UIScrollView *contentView;
 
 - (IBAction) takePhoto:(id)sender;
 - (IBAction) composeMessage:(id)sender;

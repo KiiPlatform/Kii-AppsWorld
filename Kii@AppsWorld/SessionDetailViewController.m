@@ -90,7 +90,7 @@
     
     UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(PADDING, name.frame.size.height + name.frame.origin.y, 320-2*PADDING, 15)];
     time.font = [UIFont systemFontOfSize:12.0f];
-    time.text = [[comment created] description];
+    time.text = [[comment created] timeAgo:FALSE];
     time.textColor = [UIColor grayColor];
     time.backgroundColor = [UIColor clearColor];
     [_contentView addSubview:time];
@@ -292,6 +292,8 @@
                        _noCommentLabel.font = [UIFont italicSystemFontOfSize:14.f];
                        [_contentView addSubview:_noCommentLabel];
                        
+                       [self refreshContentSize];
+                       
                    }
                }];
 
@@ -305,6 +307,10 @@
     
     // TODO: set tint on load if this person's attending
     // store in prefs by session id
+    // indicate pro/con on ScheduleViewController view using left bar
+    
+    // TODO: update user when new comment posted if attending or had posted a comment
+    
     [_declineButton setTintColor:[UIColor grayColor]];
     [_confirmButton setTintColor:nil];
     

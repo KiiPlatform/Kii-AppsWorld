@@ -301,14 +301,8 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    // push the view controller with the session information
-    SessionDetailViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SessionDetailViewController"];
-    vc.hidesBottomBarWhenPushed = YES;
-    vc.category = [_categories lastObject];
-    vc.session = [_sessions objectAtIndex:32];
-    [self.navigationController pushViewController:vc animated:TRUE];
 
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
