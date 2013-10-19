@@ -9,16 +9,27 @@
 #import "ContactsViewController.h"
 #import "SingleContactViewController.h"
 #import <KiiSDK/Kii.h>
+#import "KiiToolkit.h"
 
 @implementation ContactsViewController
 
 - (IBAction) addContact:(id)sender
 {
-    // push the view controller with the session information
-    SingleContactViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SingleContactViewController"];
-    vc.parentVC = self;
-    vc.navigationItem.title = @"Add Contact";
-    [self.navigationController presentViewController:vc animated:TRUE completion:nil];
+    if([KiiUser loggedIn]) {
+        // push the view controller with the session information
+        SingleContactViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SingleContactViewController"];
+        vc.parentVC = self;
+        vc.navigationItem.title = @"Add Contact";
+        [self.navigationController presentViewController:vc animated:TRUE completion:nil];
+    } else {
+        
+        [KTAlert showAlert:KTAlertTypeToast
+               withMessage:@"Log in to start storing contacts!"
+               andDuration:KTAlertDurationLong];
+        
+        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
+        [self presentViewController:lvc animated:TRUE completion:nil];
+    }
 }
 
 // the user hit the top-left edit/done button to turn the table editing on/off
@@ -52,7 +63,7 @@
     self.query = query;
     
     // and this defines the bucket
-    self.bucket = [[KiiUser currentUser] bucketWithName:@"contacts"];
+    self.bucket = [[KiiUser currentUser] bucketWithName:BUCKET_CONTACTS];
     
     // we also want to refresh the table with the latest query and bucket
     [self refreshQuery];

@@ -20,9 +20,19 @@
     [Kii beginWithID:@"fa71e7e2"
               andKey:@"70577e03f949a31615ecd8c1241fcee8"];
     
-    NSError *err;
-    [KiiUser authenticateSynchronous:@"chris" withPassword:@"password" andError:&err];
-    NSLog(@"Logged in user %@ ? %@", [KiiUser currentUser].uuid, err);
+    NSString *token = [[NSUserDefaults standardUserDefaults] stringForKey:@"kii-token"];
+    if(token != nil) {
+        
+        [KiiUser authenticateWithToken:token andBlock:^(KiiUser *user, NSError *error) {
+            NSLog(@"Authenticated with token");
+        }];
+        
+    }
+
+    
+//    NSError *err;
+//    [KiiUser authenticateSynchronous:@"chris" withPassword:@"password" andError:&err];
+//    NSLog(@"Logged in user %@ ? %@", [KiiUser currentUser].uuid, err);
     
     return YES;
 }

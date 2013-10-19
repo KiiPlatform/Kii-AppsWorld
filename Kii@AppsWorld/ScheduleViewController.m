@@ -13,6 +13,8 @@
 #import "SessionDetailViewController.h"
 #import <KiiSDK/Kii.h>
 
+#import "KiiToolkit.h"
+
 #define HOUR_HEIGHT         360
 #define COLUMN_WIDTH        200
 #define FIRST_DAY_LENGTH    12.5
@@ -40,7 +42,7 @@
 {
     _categories = [[NSMutableArray alloc] init];
     
-    NSArray *downloadedCategories = [[NSUserDefaults standardUserDefaults] objectForKey:@"categories"];
+    NSArray *downloadedCategories = [[NSUserDefaults standardUserDefaults] objectForKey:BUCKET_SCHEDULE_CATEGORIES];
     for(NSDictionary *category in downloadedCategories) {
         [_categories addObject:category];
         NSLog(@"Category: %@", category);
@@ -288,7 +290,7 @@
 {
     _sessions = [[NSMutableArray alloc] init];
     
-    NSArray *downloadedSessions = [[NSUserDefaults standardUserDefaults] objectForKey:@"sessions"];
+    NSArray *downloadedSessions = [[NSUserDefaults standardUserDefaults] objectForKey:BUCKET_SCHEDULE_SESSIONS];
     for(NSDictionary *session in downloadedSessions) {
         [self createSession:session];
         [_sessions addObject:session];
@@ -319,58 +321,88 @@
     
     _contentView.backgroundColor = BACKGROUND_COLOR;
     
-    NSArray *results = [[NSUserDefaults standardUserDefaults] objectForKey:@"categories"];
+    NSArray *results = [[NSUserDefaults standardUserDefaults] objectForKey:BUCKET_SCHEDULE_CATEGORIES];
     
     // if we don't have anything yet
     if(results == nil) {
         
+        [KTLoader showLoader:@"Downloading Categories"];
+        
         // load the sessions
-        KiiBucket *bucket = [Kii bucketWithName:@"categories"];
+        KiiBucket *bucket = [Kii bucketWithName:BUCKET_SCHEDULE_CATEGORIES];
         KiiQuery *query = [KiiQuery queryWithClause:nil];
         [query sortByAsc:@"priority"];
         [bucket executeQuery:query
                    withBlock:^(KiiQuery *query, KiiBucket *bucket, NSArray *results, KiiQuery *nextQuery, NSError *error) {
                        
-                       // generate a string of arrays from the results
-                       NSMutableArray *dictArrays = [NSMutableArray array];
-                       for(KiiObject *o in results) {
-                           NSMutableDictionary *newDict = [NSMutableDictionary dictionaryWithDictionary:[o dictionaryValue]];
-                           [newDict setObject:[o objectURI] forKey:@"uri"];
-                           [newDict setObject:[o uuid] forKey:@"uuid"];
-                           [dictArrays addObject:(NSDictionary*)newDict];
+                       if(error == nil) {
+
+                           // generate a string of arrays from the results
+                           NSMutableArray *dictArrays = [NSMutableArray array];
+                           for(KiiObject *o in results) {
+                               NSMutableDictionary *newDict = [NSMutableDictionary dictionaryWithDictionary:[o dictionaryValue]];
+                               [newDict setObject:[o objectURI] forKey:@"uri"];
+                               [newDict setObject:[o uuid] forKey:@"uuid"];
+                               [dictArrays addObject:(NSDictionary*)newDict];
+                           }
+                           
+                           // store the string to prefs
+                           [[NSUserDefaults standardUserDefaults] setObject:dictArrays forKey:BUCKET_SCHEDULE_CATEGORIES];
+                           [[NSUserDefaults standardUserDefaults] synchronize];
+                           
+                           [self buildCategoryView];
+                           
+                           // now load the sessions
+                           [KTLoader showLoader:@"Downloading Sessions"];
+                           
+                           KiiBucket *sessionBucket = [Kii bucketWithName:BUCKET_SCHEDULE_SESSIONS];
+                           KiiQuery *sessionQuery = [KiiQuery queryWithClause:nil];
+                           [sessionBucket executeQuery:sessionQuery
+                                             withBlock:^(KiiQuery *query, KiiBucket *bucket, NSArray *results, KiiQuery *nextQuery, NSError *error) {
+                                                 
+                                                 if(error == nil) {
+
+                                                     // generate a string of arrays from the results
+                                                     NSMutableArray *dictArrays = [NSMutableArray array];
+                                                     for(KiiObject *o in results) {
+                                                         NSMutableDictionary *newDict = [NSMutableDictionary dictionaryWithDictionary:[o dictionaryValue]];
+                                                         [newDict setObject:[o objectURI] forKey:@"uri"];
+                                                         [newDict setObject:[o uuid] forKey:@"uuid"];
+                                                         [dictArrays addObject:(NSDictionary*)newDict];
+                                                     }
+                                                     
+                                                     // store the string to prefs
+                                                     [[NSUserDefaults standardUserDefaults] setObject:dictArrays forKey:BUCKET_SCHEDULE_SESSIONS];
+                                                     [[NSUserDefaults standardUserDefaults] synchronize];
+                                                     
+                                                     // and reload the table
+                                                     [self populateSessions];
+
+                                                     [KTLoader hideLoader];
+                                                 }
+                                                 
+                                                 else {
+                                                     
+                                                     [KTLoader showLoader:@"Error loading!"
+                                                                 animated:TRUE
+                                                            withIndicator:KTLoaderIndicatorError
+                                                          andHideInterval:KTLoaderDurationAuto];
+                                                     
+                                                 }
+                                                 
+                                                 
+                                             }];
+
                        }
                        
-                       // store the string to prefs
-                       [[NSUserDefaults standardUserDefaults] setObject:dictArrays forKey:@"categories"];
-                       [[NSUserDefaults standardUserDefaults] synchronize];
-                       
-                       [self buildCategoryView];
+                       else {
+                           
+                           [KTLoader showLoader:@"Error loading!"
+                                       animated:TRUE
+                                  withIndicator:KTLoaderIndicatorError
+                                andHideInterval:KTLoaderDurationAuto];
 
-                       // now load the sessions
-                       
-                       KiiBucket *sessionBucket = [Kii bucketWithName:@"sessions"];
-                       KiiQuery *sessionQuery = [KiiQuery queryWithClause:nil];
-                       [sessionBucket executeQuery:sessionQuery
-                                         withBlock:^(KiiQuery *query, KiiBucket *bucket, NSArray *results, KiiQuery *nextQuery, NSError *error) {
-                                             
-                                             // generate a string of arrays from the results
-                                             NSMutableArray *dictArrays = [NSMutableArray array];
-                                             for(KiiObject *o in results) {
-                                                 NSMutableDictionary *newDict = [NSMutableDictionary dictionaryWithDictionary:[o dictionaryValue]];
-                                                 [newDict setObject:[o objectURI] forKey:@"uri"];
-                                                 [newDict setObject:[o uuid] forKey:@"uuid"];
-                                                 [dictArrays addObject:(NSDictionary*)newDict];
-                                             }
-                                             
-                                             // store the string to prefs
-                                             [[NSUserDefaults standardUserDefaults] setObject:dictArrays forKey:@"sessions"];
-                                             [[NSUserDefaults standardUserDefaults] synchronize];
-
-                                             // and reload the table
-                                             [self populateSessions];
-                                         }];
-                       
-                       
+                       }
                        
                    }];
         

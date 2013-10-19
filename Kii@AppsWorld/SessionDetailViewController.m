@@ -124,7 +124,7 @@
 
 - (void) postComment:(id)sender
 {
-    KiiObject *obj = [[Kii bucketWithName:@"comments"] createObject];
+    KiiObject *obj = [[Kii bucketWithName:BUCKET_COMMENTS] createObject];
     [obj setObject:[_session objectForKey:@"uri"] forKey:@"session"];
     [obj setObject:[KiiUser currentUser].username forKey:@"username"];
     [obj setObject:_composeView.text forKey:@"comment"];
@@ -173,6 +173,11 @@
         
         [self.navigationItem setTitle:@"Add Comment"];
     } else {
+        
+        [KTAlert showAlert:KTAlertTypeToast
+               withMessage:@"Log in to post comments!"
+               andDuration:KTAlertDurationLong];
+
         KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
         [self presentViewController:lvc animated:TRUE completion:nil];
     }
@@ -262,7 +267,7 @@
     [self refreshContentSize];
     
     // dynamically load the comments
-    KiiBucket *bucket = [Kii bucketWithName:@"comments"];
+    KiiBucket *bucket = [Kii bucketWithName:BUCKET_COMMENTS];
     KiiClause *clause = [KiiClause equals:@"session" value:[_session objectForKey:@"uri"]];
     KiiQuery *query = [KiiQuery queryWithClause:clause];
     [query sortByAsc:@"_created"];
@@ -302,36 +307,55 @@
 
 - (IBAction) confirmAttendance:(id)sender
 {
-    // TODO: impl sign up for push
-    NSLog(@"Confirmed");
-    
-    // TODO: set tint on load if this person's attending
-    // store in prefs by session id
-    // indicate pro/con on ScheduleViewController view using left bar
-    
-    // TODO: update user when new comment posted if attending or had posted a comment
-    
-    [_declineButton setTintColor:[UIColor grayColor]];
-    [_confirmButton setTintColor:nil];
-    
-    [KTLoader showLoader:@"Confirmed!"
-                animated:TRUE
-           withIndicator:KTLoaderIndicatorSuccess
-         andHideInterval:KTLoaderDurationAuto];
+    if([KiiUser loggedIn]) {
+        
+        // TODO: set tint on load if this person's attending
+        // store in prefs by session id
+        // indicate pro/con on ScheduleViewController view using left bar
+        
+        // TODO: update user when new comment posted if attending or had posted a comment
+        
+        [_declineButton setTintColor:[UIColor grayColor]];
+        [_confirmButton setTintColor:nil];
+        
+        [KTLoader showLoader:@"Confirmed!"
+                    animated:TRUE
+               withIndicator:KTLoaderIndicatorSuccess
+             andHideInterval:KTLoaderDurationAuto];
+
+    } else {
+        
+        [KTAlert showAlert:KTAlertTypeToast
+               withMessage:@"Log in to save your schedule and get alerts for your sessions!"
+               andDuration:KTAlertDurationLong];
+
+        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
+        [self presentViewController:lvc animated:TRUE completion:nil];
+    }
 }
 
 - (IBAction) declineAttendance:(id)sender
 {
-    // TODO: impl sign up for push
-    NSLog(@"Declined");
-    
-    [_confirmButton setTintColor:[UIColor grayColor]];
-    [_declineButton setTintColor:nil];
+    if([KiiUser loggedIn]) {
 
-    [KTLoader showLoader:@"Declined"
-                animated:TRUE
-           withIndicator:KTLoaderIndicatorError
-         andHideInterval:KTLoaderDurationAuto];
+        [_confirmButton setTintColor:[UIColor grayColor]];
+        [_declineButton setTintColor:nil];
+        
+        [KTLoader showLoader:@"Declined"
+                    animated:TRUE
+               withIndicator:KTLoaderIndicatorError
+             andHideInterval:KTLoaderDurationAuto];
+
+    } else {
+        
+        [KTAlert showAlert:KTAlertTypeToast
+               withMessage:@"Log in to save your schedule and get alerts for your sessions!"
+               andDuration:KTAlertDurationLong];
+
+        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
+        [self presentViewController:lvc animated:TRUE completion:nil];
+    }
+    
 }
 
 @end

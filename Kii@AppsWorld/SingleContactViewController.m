@@ -38,7 +38,7 @@
 // is nicely centered and not hidden by the keyboard
 - (void) shiftView:(UIView*)textField
 {
-    CGRect frame = CGRectZero;
+    CGAffineTransform t = CGAffineTransformIdentity;
     
     // if the textfield is not nil, that means we're not force-hiding
     if(textField != nil) {
@@ -49,26 +49,17 @@
         
         // the view would be hidden or not in acceptable range, we need to slide the view
         if(offset > maximum) {
-            
-            // set the frame to a safe, centered position
-            frame = self.view.frame;
-            frame.origin.y = maximum - offset;
+            t = CGAffineTransformMakeTranslation(0, maximum - offset);
         }
     }
     
-    // if the view hasn't been changed so far - it needs to be moved back to its default position
-    if(CGRectEqualToRect(frame, CGRectZero) && self.view.frame.origin.y != 0) {
-        frame = self.view.frame;
-        frame.origin.y = 0;
-    }
-    
     // if there was a change made, make it a nice animated change
-    if(!CGRectEqualToRect(frame, CGRectZero)) {
-        
+    if(!CGAffineTransformEqualToTransform(t, self.view.transform)) {
+    
         // perform the animation
         [UIView animateWithDuration:KEYBOARD_ANIMATION_TIME
                          animations:^{
-                             self.view.frame = frame;
+                             self.view.transform = t;
                          }];
     }
     
@@ -79,7 +70,7 @@
 {
     KiiObject *contact = _userObject;
     if(contact == nil) {
-        contact = [[[KiiUser currentUser] bucketWithName:@"contacts"] createObject];
+        contact = [[[KiiUser currentUser] bucketWithName:BUCKET_CONTACTS] createObject];
     }
 
     [contact setObject:_firstName.text forKey:@"firstName"];

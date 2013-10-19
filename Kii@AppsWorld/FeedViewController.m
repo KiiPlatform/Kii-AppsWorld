@@ -49,6 +49,11 @@
         
         [sheet showFromTabBar:self.tabBarController.tabBar];
     } else {
+        
+        [KTAlert showAlert:KTAlertTypeToast
+               withMessage:@"Log in to post pictures!"
+               andDuration:KTAlertDurationLong];
+
         KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
         [self presentViewController:lvc animated:TRUE completion:nil];
     }
@@ -79,7 +84,7 @@
     
     [KTLoader showLoader:@"Posting..."];
     
-    KiiObject *obj = [[Kii bucketWithName:@"feed"] createObject];
+    KiiObject *obj = [[Kii bucketWithName:BUCKET_FEED] createObject];
     [obj setObject:[KiiUser currentUser].username forKey:@"username"];
     [obj setObject:_composeView.text forKey:@"message"];
     [obj saveWithBlock:^(KiiObject *object, NSError *error) {
@@ -130,6 +135,11 @@
         [_navItem setTitle:@"Create a Post"];
 
     } else {
+        
+        [KTAlert showAlert:KTAlertTypeToast
+               withMessage:@"Log in to start posting!"
+               andDuration:KTAlertDurationLong];
+
         KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
         [self presentViewController:lvc animated:TRUE completion:nil];
     }
@@ -372,7 +382,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
            withIndicator:KTLoaderIndicatorProgress];
     
     // start the upload
-    KiiBucket *bucket = [Kii bucketWithName:@"feed"];
+    KiiBucket *bucket = [Kii bucketWithName:BUCKET_FEED];
     KiiObject *object = [bucket createObject];
     [object setObject:[KiiUser currentUser].username forKey:@"username"];
     

@@ -14,3 +14,10 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+
+#define BUCKET_CONTACTS                 @"contacts"
+#define BUCKET_FEED                     @"feed"
+#define BUCKET_SCHEDULE_CATEGORIES      @"categories"
+#define BUCKET_SCHEDULE_SESSIONS        @"sessions"
+#define BUCKET_COMMENTS                 @"comments"
