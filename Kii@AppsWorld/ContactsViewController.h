@@ -11,6 +11,7 @@
 #import "KiiToolkit.h"
 
 @interface ContactsViewController : KTTableViewController
+<KTTableViewDelegate>
 
 - (IBAction) toggleEditing:(id)sender;
 

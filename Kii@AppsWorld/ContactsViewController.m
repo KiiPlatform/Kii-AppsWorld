@@ -61,6 +61,7 @@
     KiiQuery *query = [KiiQuery queryWithClause:nil];
     [query sortByAsc:@"firstName"];
     self.query = query;
+    self.autoHandleErrors = FALSE;
     
     // and this defines the bucket
     self.bucket = [[KiiUser currentUser] bucketWithName:BUCKET_CONTACTS];
@@ -143,5 +144,21 @@
     }
 }
 
+- (void) tableDidStartLoading
+{
+    [KTLoader showLoader:@"Loading My Contacts..."];
+}
+
+- (void) tableDidFinishLoading:(NSError *)error
+{
+    if(error == nil) {
+        [KTLoader hideLoader];
+    } else {
+        [KTLoader showLoader:@"Unable to load!"
+                    animated:TRUE
+               withIndicator:KTLoaderIndicatorError
+             andHideInterval:KTLoaderDurationAuto];
+    }
+}
 
 @end

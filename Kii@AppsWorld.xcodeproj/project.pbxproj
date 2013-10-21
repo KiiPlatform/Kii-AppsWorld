@@ -18,6 +18,7 @@
 		CA60A0D5180EDEC200C69DFC /* contacts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0D3180EDEC200C69DFC /* contacts@2x.png */; };
 		CA60A0D8180EDF2100C69DFC /* nearby.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0D6180EDF2100C69DFC /* nearby.png */; };
 		CA60A0D9180EDF2100C69DFC /* nearby@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CA60A0D7180EDF2100C69DFC /* nearby@2x.png */; };
+		CA99D8191815776100E11418 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA99D8181815776100E11418 /* WelcomeViewController.m */; };
 		CAA2AE551807AA0500F5288F /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2AE541807AA0500F5288F /* ScheduleViewController.m */; };
 		CAA2AE581807B8C800F5288F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2AE571807B8C800F5288F /* FeedViewController.m */; };
 		CAA2AE5E1807BA7600F5288F /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2AE5D1807BA7600F5288F /* ContactsViewController.m */; };
@@ -97,6 +98,8 @@
 		CA60A0D3180EDEC200C69DFC /* contacts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contacts@2x.png"; sourceTree = "<group>"; };
 		CA60A0D6180EDF2100C69DFC /* nearby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nearby.png; sourceTree = "<group>"; };
 		CA60A0D7180EDF2100C69DFC /* nearby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nearby@2x.png"; sourceTree = "<group>"; };
+		CA99D8171815776100E11418 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		CA99D8181815776100E11418 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		CAA2AE531807AA0500F5288F /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
 		CAA2AE541807AA0500F5288F /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
 		CAA2AE561807B8C800F5288F /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
@@ -517,6 +520,8 @@
 			children = (
 				CAEE8EE918036ACA0091B22A /* AppDelegate.h */,
 				CAEE8EEA18036ACA0091B22A /* AppDelegate.m */,
+				CA99D8171815776100E11418 /* WelcomeViewController.h */,
+				CA99D8181815776100E11418 /* WelcomeViewController.m */,
 				CAA2AE531807AA0500F5288F /* ScheduleViewController.h */,
 				CAA2AE541807AA0500F5288F /* ScheduleViewController.m */,
 				CAC7D4191810314E00045737 /* SessionDetailViewController.h */,
@@ -691,6 +696,7 @@
 				CAD800B2180F3B3D00FEA608 /* KTLoader.m in Sources */,
 				CAD800A8180F3B3D00FEA608 /* KTAlert.m in Sources */,
 				CAD800B6180F3B3D00FEA608 /* NSString+KTUtilities.m in Sources */,
+				CA99D8191815776100E11418 /* WelcomeViewController.m in Sources */,
 				CA4772B6181146960040F3AD /* NSDate+KTUtilities.m in Sources */,
 				CA4772BD18115F440040F3AD /* SingleContactViewController.m in Sources */,
 				CAD800B4180F3B3D00FEA608 /* KTTextField.m in Sources */,
@@ -845,7 +851,7 @@
 				INFOPLIST_FILE = "Kii@AppsWorld/Kii@AppsWorld-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DD744F35-7767-4266-A8D2-8C42B974B79F";
+				PROVISIONING_PROFILE = "8B6B670B-FF9F-4B95-9132-A38156090B7A";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

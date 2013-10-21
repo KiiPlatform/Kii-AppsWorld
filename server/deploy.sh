@@ -3,7 +3,7 @@
 node bin/kii-servercode.js deploy-file \
   --file ../feed.js \
   --site us \
-  --app-id fa71e7e2 \
-  --app-key 70577e03f949a31615ecd8c1241fcee8 \
-  --client-id b35f3ab418b1181adbf4097472f96825 \
-  --client-secret 86006d494d54e929b61df4c0d64b6ebc6db987b8e8338e05fd226b067c2fc0c6
+  --app-id 894902db \
+  --app-key a3323c113244e1a7879a80256f2e933e \
+  --client-id 64e86412f0c13677cdb64ee08c29f278 \
+  --client-secret df502a8ea834016242c3351be2d43081a7ff12e4595aefd369df524ff4aa4fc3

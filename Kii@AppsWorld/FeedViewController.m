@@ -326,6 +326,9 @@
                      [KTLoader hideLoader];
                      
                  } else {
+                     
+                     NSLog(@"Error: %@", error);
+                     
                      [KTLoader showLoader:@"Error Loading Feed"
                                  animated:TRUE
                             withIndicator:KTLoaderIndicatorError

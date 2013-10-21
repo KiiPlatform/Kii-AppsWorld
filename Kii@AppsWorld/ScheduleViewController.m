@@ -322,9 +322,10 @@
     _contentView.backgroundColor = BACKGROUND_COLOR;
     
     NSArray *results = [[NSUserDefaults standardUserDefaults] objectForKey:BUCKET_SCHEDULE_CATEGORIES];
+    NSArray *sessionResults = [[NSUserDefaults standardUserDefaults] objectForKey:BUCKET_SCHEDULE_SESSIONS];
     
     // if we don't have anything yet
-    if(results == nil) {
+    if(results == nil || sessionResults == nil) {
         
         [KTLoader showLoader:@"Downloading Categories"];
         
