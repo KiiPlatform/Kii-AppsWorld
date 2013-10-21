@@ -11,6 +11,7 @@
 #import <KiiSDK/Kii.h>
 #import <KiiSDK/KiiServerCodeExecResult.h>
 
+#import "AppDelegate.h"
 #import "KiiToolkit.h"
 
 #define PADDING     20
@@ -81,7 +82,6 @@
 
 - (void) postMessage:(id)sender
 {
-    
     [KTLoader showLoader:@"Posting..."];
     
     KiiObject *obj = [[Kii bucketWithName:BUCKET_FEED] createObject];
@@ -207,40 +207,50 @@
             imageView.image = img;
         } else if(uri != nil) {
             
-            // TODO: dload it
             KiiObject *object = [KiiObject objectWithURI:uri];
             
             // Create a KiiDownloader.
-            NSString *fileName = [NSString randomString:20];
-            __block NSString *downloadFilePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fileName];
-            KiiDownloader *downloader = [object downloader:downloadFilePath];
+            __block NSString *downloadFilePath = [[AppDelegate applicationDocumentsDirectory] stringByAppendingPathComponent:object.uuid];
             
-            // Create a progress block.
-            KiiRTransferBlock progress = ^(id <KiiRTransfer> transferObject, NSError *retError) {
-                KiiRTransferInfo *info = [transferObject info];
+            if([[NSFileManager defaultManager] fileExistsAtPath:downloadFilePath]) {
+                UIImage *img = [UIImage imageWithContentsOfFile:downloadFilePath];
+                imageView.image = img; //[UIImage imageWithContentsOfFile:downloadFilePath];
+            }
+            
+            // otherwise, download
+            else {
+
+                __block UIActivityIndicatorView *av = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                av.center = CGPointMake(imageView.frame.size.width/2, imageView.frame.size.height/2);
+                [imageView addSubview:av];
+                [av startAnimating];
+
+                KiiDownloader *downloader = [object downloader:downloadFilePath];
                 
-                // TODO: show loader within image
-            };
-            
-            // Start downloading.
-            [downloader transferWithProgressBlock:progress
-                               andCompletionBlock:^(id<KiiRTransfer> transferObject, NSError *error) {
-                                   if(error == nil) {
-                                       UIImage *img = [UIImage imageWithContentsOfFile:downloadFilePath];
-                                       imageView.image = img; //[UIImage imageWithContentsOfFile:downloadFilePath];
-                                   } else {
-                                       NSLog(@"Error downloading");
+                // Start downloading.
+                [downloader transferWithProgressBlock:nil
+                                   andCompletionBlock:^(id<KiiRTransfer> transferObject, NSError *error) {
                                        
-                                       // TODO: show error within image
-                                   }
-                                   
-                                   // remove the file
-                                   NSError *fileErr;
-                                   
-                                   // TODO: fix file deletions
-//                                   [[NSFileManager defaultManager] removeItemAtPath:downloadFilePath error:&fileErr];
-                                   
-                               }];
+                                       [av removeFromSuperview];
+                                       
+                                       if(error == nil) {
+                                           UIImage *img = [UIImage imageWithContentsOfFile:downloadFilePath];
+                                           imageView.image = img;
+                                       } else {
+                                           NSLog(@"Error downloading: %@", error);
+                                           
+                                           UILabel *errorLabel = [[UILabel alloc] initWithFrame:imageView.bounds];
+                                           errorLabel.textColor = [UIColor grayColor];
+                                           errorLabel.backgroundColor = [UIColor clearColor];
+                                           errorLabel.textAlignment = NSTextAlignmentCenter;
+                                           errorLabel.font = [UIFont boldSystemFontOfSize:16];
+                                           errorLabel.text = @"Error loading image!";
+                                           [imageView addSubview:errorLabel];
+                                       }
+                                       
+                                   }];
+
+            }
 
         }
         
@@ -376,7 +386,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     __block UIImage *newImage = [UIImage imageWithImage:image scaledToSize:CGSizeMake(280, 280)];
     
     // save it to file
-    __block NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"img"];
+    __block NSString *path = [[AppDelegate applicationDocumentsDirectory] stringByAppendingPathComponent:[NSString randomString:16]];
     [UIImageJPEGRepresentation(newImage, 1.0f) writeToFile:path atomically:TRUE];
     
     // show the progress indicator
@@ -398,6 +408,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 KiiRTransferInfo *info = [transferObject info];
                 float progressFloat = (float) [info completedSizeInBytes] / [info totalSizeInBytes];
                 [KTLoader setProgress:progressFloat];
+                
+                NSLog(@"Progress: %g", progressFloat);
             };
             
             [uploader transferWithProgressBlock:progress
@@ -416,6 +428,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                            andImage:newImage];
                                      
                                  } else {
+                                     NSLog(@"Error: %@", error);
                                      [KTLoader showLoader:@"Error!"
                                                  animated:TRUE
                                             withIndicator:KTLoaderIndicatorError
@@ -429,10 +442,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                              }];
             
         } else {
+            NSLog(@"Error: %@", error);
             [KTLoader showLoader:@"Error!"
                         animated:TRUE
                    withIndicator:KTLoaderIndicatorError
                  andHideInterval:KTLoaderDurationAuto];
+
+            // remove the file
+            NSError *fileErr;
+            [[NSFileManager defaultManager] removeItemAtPath:path error:&fileErr];
         }
     }];
 

@@ -25,6 +25,9 @@
     NSString *currentVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
     NSLog(@"Current version: %@", currentVersion);
     
+    // set this
+    [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:@"version-number"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     KiiBucket *bucket = [Kii bucketWithName:@"versions"];
     KiiQuery *query = [KiiQuery queryWithClause:nil];
@@ -65,6 +68,13 @@
     [self checkForUpdate];
     
     return YES;
+}
+
++ (NSString *) applicationDocumentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    return basePath;
 }
 							
 @end
