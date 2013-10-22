@@ -83,6 +83,7 @@
     KiiObject *obj = [[Kii bucketWithName:BUCKET_FEED] createObject];
     [obj setObject:[KiiUser currentUser].username forKey:@"username"];
     [obj setObject:_composeView.text forKey:@"message"];
+    [obj setObject:@"text" forKey:@"message_type"];
     [obj saveWithBlock:^(KiiObject *object, NSError *error) {
         if(error == nil) {
             [KTLoader showLoader:@"Posted!"
@@ -283,6 +284,11 @@
     _contentView.contentSize = CGSizeMake(320, maxY+PADDING);
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [KiiAnalytics trackEvent:@"page_view" withExtras:@{@"page": @"feed", @"logged_in": [NSNumber numberWithBool:[KiiUser loggedIn]]}];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -389,6 +395,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // start the upload
     KiiBucket *bucket = [Kii bucketWithName:BUCKET_FEED];
     KiiObject *object = [bucket createObject];
+    [object setObject:@"image" forKey:@"message_type"];
     [object setObject:[KiiUser currentUser].username forKey:@"username"];
     
     [object saveWithBlock:^(KiiObject *object, NSError *error) {

@@ -51,6 +51,13 @@
 
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [KiiAnalytics trackEvent:@"page_view" withExtras:@{@"page": @"contacts", @"logged_in": [NSNumber numberWithBool:[KiiUser loggedIn]]}];
+}
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];

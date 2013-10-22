@@ -18,6 +18,14 @@
 
 @implementation SingleContactViewController
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    [KiiAnalytics trackEvent:@"page_view" withExtras:@{@"page": @"contacts", @"sub_page": @"single_contact", @"logged_in": [NSNumber numberWithBool:[KiiUser loggedIn]]}];
+
+}
+
 - (void) viewDidLoad
 {
     [super viewDidLoad];
@@ -80,7 +88,6 @@
     [contact setObject:_phoneNumber.text forKey:@"phoneNumber"];
     [contact setObject:_website.text forKey:@"website"];
     [contact setObject:_notes.text forKey:@"notes"];
-    
     
     [KTLoader showLoader:@"Saving Contact..."];
     [contact saveWithBlock:^(KiiObject *object, NSError *error) {

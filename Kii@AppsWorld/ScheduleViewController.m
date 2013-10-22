@@ -49,7 +49,6 @@
     NSArray *downloadedCategories = [[NSUserDefaults standardUserDefaults] objectForKey:BUCKET_SCHEDULE_CATEGORIES];
     for(NSDictionary *category in downloadedCategories) {
         [_categories addObject:category];
-        NSLog(@"Category: %@", category);
     }
 
     _categoryView.contentOffset = CGPointZero;
@@ -86,8 +85,6 @@
     
     // then the session
     int sessionIndex = gesture.view.tag;
-    
-    NSLog(@"Tapped: %d, %d", categoryIndex, sessionIndex);
     
     NSDictionary *category = [_categories objectAtIndex:categoryIndex];
     NSString *categoryURI = [category objectForKey:@"uri"];
@@ -133,8 +130,6 @@
     NSString *endTimeString = [sessionInfo objectForKey:@"endTimeString"];
     
     int day = [[sessionInfo objectForKey:@"day"] intValue];
-    
-//    NSLog(@"Creating session[%d/%g-%g][%@] => %@", day, startTimeExact, endTimeExact, categoryID, [sessionInfo objectForKey:@"title"]);
     
     CGFloat y = 0;
     CGFloat x = 0;
@@ -302,7 +297,7 @@
         [self createSession:session];
         [_sessions addObject:session];
     }
-    
+        
     [_contentView setContentOffset:CGPointMake(0, 0)];
     _timeLabel.text = @"Day 1 - 0900";
 }
@@ -311,7 +306,7 @@
 {
     [super viewDidAppear:animated];
 
-    
+    [KiiAnalytics trackEvent:@"page_view" withExtras:@{@"page": @"schedule", @"logged_in": [NSNumber numberWithBool:[KiiUser loggedIn]]}];
 }
 
 - (void) viewWillAppear:(BOOL)animated

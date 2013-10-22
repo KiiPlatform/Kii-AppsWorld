@@ -64,6 +64,14 @@
     [Kii beginWithID:@"894902db"
               andKey:@"a3323c113244e1a7879a80256f2e933e"];
 
+    [KiiAnalytics beginWithID:@"894902db"
+                       andKey:@"a3323c113244e1a7879a80256f2e933e"];
+    
+    NSString *model = [[UIDevice currentDevice] model];
+    NSString *sysVersion = [[UIDevice currentDevice] systemVersion];
+    NSString *locale = [[NSLocale preferredLanguages] objectAtIndex:0];
+    [KiiAnalytics trackEvent:@"launch" withExtras:@{@"model": model, @"system_version": sysVersion, @"locale": locale}];
+
     // check for updates
     [self checkForUpdate];
     
@@ -78,7 +86,7 @@
         if(error == nil) {
             NSLog(@"Push installed!");
         } else {
-            NSLog(@"Error installing: %@", error);
+            NSLog(@"Error installing push: %@", error);
         }
     }];
 }

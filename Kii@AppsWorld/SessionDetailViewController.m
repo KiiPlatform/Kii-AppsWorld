@@ -40,11 +40,17 @@
     _contentView.contentSize = CGSizeMake(320, lowestView + PADDING);
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [KiiAnalytics trackEvent:@"page_view" withExtras:@{@"page": @"session", @"sub_page": [_session objectForKey:@"title"], @"logged_in": [NSNumber numberWithBool:[KiiUser loggedIn]]}];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    
     
 }
 
@@ -76,7 +82,6 @@
         if([v isKindOfClass:[UILabel class]]) {
             if(v.frame.origin.y + v.frame.size.height > lowestView) {
                 lowestView = v.frame.origin.y + v.frame.size.height;
-                NSLog(@"Lowest view: %@", v);
             }
         }
     }
@@ -86,8 +91,6 @@
     name.text = [comment getObjectForKey:@"username"];
     name.backgroundColor = [UIColor clearColor];
     [_contentView addSubview:name];
-    
-    NSLog(@"Nameview: %@", name);
     
     UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(PADDING, name.frame.size.height + name.frame.origin.y, 320-2*PADDING, 15)];
     time.font = [UIFont systemFontOfSize:12.0f];
@@ -129,8 +132,9 @@
     [obj setObject:[_session objectForKey:@"uri"] forKey:@"session"];
     [obj setObject:[KiiUser currentUser].username forKey:@"username"];
     [obj setObject:_composeView.text forKey:@"comment"];
-    
-    NSLog(@"Posting: %@", [obj dictionaryValue]);
+    [obj setObject:[_session objectForKey:@"title"] forKey:@"session_title"];
+    [obj setObject:[_session objectForKey:@"trackName"] forKey:@"session_track"];
+    [obj setObject:[_session objectForKey:@"startTimeString"] forKey:@"session_start_time"];
     
     [KTLoader showLoader:@"Posting Comment..."];
     [obj saveWithBlock:^(KiiObject *object, NSError *error) {
@@ -140,21 +144,20 @@
         if(error == nil) {
             
             // create the topic
-            NSString *topicName = [NSString stringWithFormat:@"%@-comment",[_session objectForKey:@"uuid"]];
-            NSLog(@"Creating topic of name: %@", topicName);
+            NSString *topicName = [_session objectForKey:@"uuid"];
             KiiTopic *topic = [Kii topicWithName:topicName];
 
             KiiAPNSFields *apnsFields = [KiiAPNSFields createFields];
-//            [apnsFields setSound:@"alert"];
-//            [apnsFields setBadge:[NSNumber numberWithInt:1]];
-//            [apnsFields setSpecificData:@{@"sound": @"alert"}];
+            [apnsFields setAlertBody:[NSString stringWithFormat:@"New comment on: %@", [_session objectForKey:@"title"]]];
             
-            NSString *alertBody = [NSString stringWithFormat:@"New comment on: %@", [_session objectForKey:@"title"]];
-            NSLog(@"AlertBody: %@", alertBody);
-//            [apnsFields setAlertBody:alertBody];
-//            [apnsFields setSound:@"alert"];
-            KiiPushMessage *message = [KiiPushMessage composeMessageWithAPNSFields:apnsFields andGCMFields:nil];
-            [topic sendMessage:message withBlock:^(KiiTopic *topic, NSError *error) {
+            // If you want to extra data, create dictionary and set to it.
+            NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+            [dictionary setObject:[NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]*1000] forKey:@"time"];
+            [apnsFields setSpecificData:dictionary];
+            
+            // Create message. In this case GCM fields set nil, so will not send message to Android devices.
+            KiiPushMessage *pushMessage = [KiiPushMessage composeMessageWithAPNSFields:apnsFields andGCMFields:nil];
+            [topic sendMessage:pushMessage withBlock:^(KiiTopic *topic, NSError *error) {
                 NSLog(@"Sent message: %@", error);
             }];
             
@@ -178,8 +181,6 @@
 
 - (void) addComment:(id)sender
 {
-    NSLog(@"Add comment");
-    
     if([KiiUser loggedIn]) {
         // show the compose view
         _composeView.hidden = FALSE;
@@ -216,9 +217,6 @@
                                                                                  target:self
                                                                                  action:@selector(shareSession:)];
     self.navigationItem.rightBarButtonItem = shareButton;
-    
-    NSLog(@"Category: %@", _category);
-    NSLog(@"Session: %@", _session);
     
     UILabel *categoryName = [[UILabel alloc] initWithFrame:CGRectMake(PADDING, PADDING, 320-PADDING*2, 30)];
     categoryName.text = [[_category objectForKey:@"name"] uppercaseString];
@@ -377,7 +375,8 @@
             [o setObject:[KiiUser currentUser].uuid forKey:@"user"];
             [o setObject:[_session objectForKey:@"uuid"] forKey:@"session"];
             [o setObject:[_session objectForKey:@"title"] forKey:@"session_title"];
-            [o setObject:[_session objectForKey:@"track"] forKey:@"session_track"];
+            [o setObject:[_session objectForKey:@"trackName"] forKey:@"session_track"];
+            [o setObject:[_session objectForKey:@"startTimeString"] forKey:@"session_start_time"];
             [o saveWithBlock:^(KiiObject *object, NSError *error) {
                 if(error == nil) {
                     
@@ -385,16 +384,10 @@
                     _attendingURI = object.objectURI;
                     
                     // subscribe to comments
-                    NSString *topicName = [NSString stringWithFormat:@"%@-comment",[_session objectForKey:@"uuid"]];
+                    NSString *topicName = [_session objectForKey:@"uuid"];
                     KiiTopic *topic = [Kii topicWithName:topicName];
                     [KiiPushSubscription subscribe:topic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
                         NSLog(@"Subscribed to comments: %@", error);
-                    }];
-                    
-                    // subscribe to session
-                    KiiTopic *sessionTopic = [Kii topicWithName:[_session objectForKey:@"uuid"]];
-                    [KiiPushSubscription subscribe:sessionTopic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
-                        NSLog(@"Subscribed to session: %@", error);
                     }];
                     
                     [KTLoader showLoader:@"Confirmed!"
@@ -423,18 +416,11 @@
                     _attendingURI = nil;
 
                     // un-subscribe from comments
-                    NSString *topicName = [NSString stringWithFormat:@"%@-comment",[_session objectForKey:@"uuid"]];
+                    NSString *topicName = [_session objectForKey:@"uuid"];
                     KiiTopic *topic = [Kii topicWithName:topicName];
                     [KiiPushSubscription unsubscribe:topic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
                         NSLog(@"unsubscribed from comments: %@", error);
                     }];
-                    
-                    // unsubscribe from session
-                    KiiTopic *sessionTopic = [Kii topicWithName:[_session objectForKey:@"uuid"]];
-                    [KiiPushSubscription unsubscribe:sessionTopic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
-                        NSLog(@"unsubscribed to session: %@", error);
-                    }];
-                    
 
                     [KTLoader showLoader:@"Declined"
                                 animated:TRUE

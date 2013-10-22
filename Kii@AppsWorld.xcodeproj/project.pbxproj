@@ -24,6 +24,8 @@
 		CA6B8CC71815D5DF00D71565 /* icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = CA6B8CC11815D5DF00D71565 /* icon-80.png */; };
 		CA6B8CC81815D5DF00D71565 /* icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = CA6B8CC21815D5DF00D71565 /* icon-114.png */; };
 		CA6B8CC91815D5DF00D71565 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = CA6B8CC31815D5DF00D71565 /* icon-120.png */; };
+		CA6B8CCB18160B3B00D71565 /* KiiAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6B8CCA18160B3B00D71565 /* KiiAnalytics.framework */; };
+		CA6B8CCD18160B7300D71565 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6B8CCC18160B7300D71565 /* libsqlite3.dylib */; };
 		CA99D8191815776100E11418 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA99D8181815776100E11418 /* WelcomeViewController.m */; };
 		CAA2AE551807AA0500F5288F /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2AE541807AA0500F5288F /* ScheduleViewController.m */; };
 		CAA2AE581807B8C800F5288F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA2AE571807B8C800F5288F /* FeedViewController.m */; };
@@ -110,6 +112,8 @@
 		CA6B8CC11815D5DF00D71565 /* icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-80.png"; sourceTree = "<group>"; };
 		CA6B8CC21815D5DF00D71565 /* icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-114.png"; sourceTree = "<group>"; };
 		CA6B8CC31815D5DF00D71565 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
+		CA6B8CCA18160B3B00D71565 /* KiiAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KiiAnalytics.framework; sourceTree = "<group>"; };
+		CA6B8CCC18160B7300D71565 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CA99D8171815776100E11418 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		CA99D8181815776100E11418 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		CAA2AE531807AA0500F5288F /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA6B8CCD18160B7300D71565 /* libsqlite3.dylib in Frameworks */,
 				CAD80004180F3A7300FEA608 /* Twitter.framework in Frameworks */,
 				CAD80002180F3A6D00FEA608 /* Accounts.framework in Frameworks */,
 				CAD80000180F3A6800FEA608 /* MobileCoreServices.framework in Frameworks */,
@@ -210,6 +215,7 @@
 				CAEE8EDF18036ACA0091B22A /* UIKit.framework in Frameworks */,
 				CAEE8EDB18036ACA0091B22A /* Foundation.framework in Frameworks */,
 				CAD8FFFE180F3A0800FEA608 /* KiiSDK.framework in Frameworks */,
+				CA6B8CCB18160B3B00D71565 /* KiiAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +534,8 @@
 		CAEE8ED918036ACA0091B22A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA6B8CCC18160B7300D71565 /* libsqlite3.dylib */,
+				CA6B8CCA18160B3B00D71565 /* KiiAnalytics.framework */,
 				CAD80003180F3A7300FEA608 /* Twitter.framework */,
 				CAD80001180F3A6D00FEA608 /* Accounts.framework */,
 				CAD8FFFF180F3A6800FEA608 /* MobileCoreServices.framework */,
