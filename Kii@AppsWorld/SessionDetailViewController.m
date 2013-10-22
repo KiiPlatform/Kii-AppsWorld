@@ -147,8 +147,16 @@
             NSString *topicName = [_session objectForKey:@"uuid"];
             KiiTopic *topic = [Kii topicWithName:topicName];
 
+            NSString *safeTitle = [_session objectForKey:@"title"];
+            safeTitle = [safeTitle stringByReplacingOccurrencesOfString:@":" withString:@""];
+            
+            if(safeTitle.length > 30) {
+                safeTitle = [safeTitle substringToIndex:30];
+                safeTitle = [safeTitle stringByAppendingString:@"..."];
+            }
+            
             KiiAPNSFields *apnsFields = [KiiAPNSFields createFields];
-            [apnsFields setAlertBody:[NSString stringWithFormat:@"New comment on: %@", [_session objectForKey:@"title"]]];
+            [apnsFields setAlertBody:[NSString stringWithFormat:@"New comment on: %@", safeTitle]];
             
             // If you want to extra data, create dictionary and set to it.
             NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];

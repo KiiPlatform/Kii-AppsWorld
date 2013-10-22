@@ -23,7 +23,7 @@
 - (void) continueWithLogin
 {
     // Enable push with DevelopmentMode
-    [Kii enableAPNSWithDevelopmentMode:YES
+    [Kii enableAPNSWithDevelopmentMode:NO
                   andNotificationTypes:(UIRemoteNotificationTypeBadge |
                                         UIRemoteNotificationTypeSound |
                                         UIRemoteNotificationTypeAlert)];
