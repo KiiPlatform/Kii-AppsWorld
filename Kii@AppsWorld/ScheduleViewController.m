@@ -24,11 +24,15 @@
 #define FIRST_DAY_START     09.00f
 #define SECOND_DAY_START    09.00f
 
+#define LEFT_BAR_TAG        1234
+
 #define BACKGROUND_COLOR    [UIColor colorWithHex:@"eeeeee"]
 
 @interface ScheduleViewController() {
     NSMutableArray *_categories;
     NSMutableArray *_sessions;
+    
+    NSMutableDictionary *_leftBars;
 }
 
 @end
@@ -182,8 +186,10 @@
     
     UIView *leftBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, borderWidth, v.frame.size.height)];
     leftBar.backgroundColor = leftBarBackground;
+    leftBar.tag = LEFT_BAR_TAG;
     [v addSubview:leftBar];
-    
+    [_leftBars setObject:leftBar forKey:[sessionInfo objectForKey:@"uuid"]];
+
     UIView *bottomBar = [[UIView alloc] initWithFrame:CGRectMake(0, height-borderWidth, width, borderWidth)];
     bottomBar.backgroundColor = BACKGROUND_COLOR;
     [v addSubview:bottomBar];
@@ -289,6 +295,7 @@
 - (void) populateSessions
 {
     _sessions = [[NSMutableArray alloc] init];
+    _leftBars = [[NSMutableDictionary alloc] init];
     
     NSArray *downloadedSessions = [[NSUserDefaults standardUserDefaults] objectForKey:BUCKET_SCHEDULE_SESSIONS];
     for(NSDictionary *session in downloadedSessions) {
@@ -313,6 +320,36 @@
     
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
 
+    
+    // get all the sessions i'm attending
+    if([KiiUser loggedIn]) {
+        KiiBucket *bucket = [Kii bucketWithName:BUCKET_ATTENDING];
+        KiiClause *clause1 = [KiiClause equals:@"user" value:[KiiUser currentUser].uuid];
+        KiiQuery *query = [KiiQuery queryWithClause:clause1];
+        [bucket executeQuery:query
+                   withBlock:^(KiiQuery *query, KiiBucket *bucket, NSArray *results, KiiQuery *nextQuery, NSError *error) {
+                       if(error == nil) {
+                           
+                           // make all the sessions unhighlighted
+                           for(UIView *v in _contentView.subviews) {
+                               for(UIView *bar in v.subviews) {
+                                   if(bar.tag == LEFT_BAR_TAG) {
+                                       bar.backgroundColor = [UIColor lightGrayColor];
+                                   }
+                               }
+                           }
+                           
+                           // highlight these sessions
+                           for(KiiObject *attending in results) {
+                               
+                               NSString *attendingID = [attending getObjectForKey:@"session"];
+                               UIView *leftbar = [_leftBars objectForKey:attendingID];
+                               leftbar.backgroundColor = [UIColor colorWithHex:@"00cc00"];                               
+                           }
+                           
+                       }
+                   }];
+    }
 }
 
 - (void) viewDidLoad

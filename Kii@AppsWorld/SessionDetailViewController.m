@@ -16,6 +16,8 @@
 @interface SessionDetailViewController() {
     UIActivityIndicatorView *_commentIndicator;
     UILabel *_noCommentLabel;
+    
+    NSString *_attendingURI;
 }
 
 @end
@@ -30,7 +32,6 @@
         if([v isKindOfClass:[UILabel class]]) {
             if(v.frame.origin.y + v.frame.size.height > lowestView) {
                 lowestView = v.frame.origin.y + v.frame.size.height;
-                NSLog(@"Lowest view: %@", v);
             }
         }
     }
@@ -137,6 +138,31 @@
         [KTLoader hideLoader];
         
         if(error == nil) {
+            
+            // create the topic
+            NSString *topicName = [NSString stringWithFormat:@"%@-comment",[_session objectForKey:@"uuid"]];
+            NSLog(@"Creating topic of name: %@", topicName);
+            KiiTopic *topic = [Kii topicWithName:topicName];
+
+            KiiAPNSFields *apnsFields = [KiiAPNSFields createFields];
+//            [apnsFields setSound:@"alert"];
+//            [apnsFields setBadge:[NSNumber numberWithInt:1]];
+//            [apnsFields setSpecificData:@{@"sound": @"alert"}];
+            
+            NSString *alertBody = [NSString stringWithFormat:@"New comment on: %@", [_session objectForKey:@"title"]];
+            NSLog(@"AlertBody: %@", alertBody);
+//            [apnsFields setAlertBody:alertBody];
+//            [apnsFields setSound:@"alert"];
+            KiiPushMessage *message = [KiiPushMessage composeMessageWithAPNSFields:apnsFields andGCMFields:nil];
+            [topic sendMessage:message withBlock:^(KiiTopic *topic, NSError *error) {
+                NSLog(@"Sent message: %@", error);
+            }];
+            
+            // either way, subscribe
+            [KiiPushSubscription subscribe:topic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
+                NSLog(@"Subscribed: %@", error);
+            }];
+
             // write the comment
             [self writeComment:object];
             
@@ -173,13 +199,9 @@
         
         [self.navigationItem setTitle:@"Add Comment"];
     } else {
-        
         [KTAlert showAlert:KTAlertTypeToast
                withMessage:@"Log in to post comments!"
                andDuration:KTAlertDurationLong];
-
-        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
-        [self presentViewController:lvc animated:TRUE completion:nil];
     }
     
 }
@@ -256,7 +278,6 @@
     addComment.center = CGPointMake(290, commentHeader.center.y);
     [addComment addTarget:self action:@selector(addComment:) forControlEvents:UIControlEventTouchUpInside];
     [_contentView addSubview:addComment];
-    
 
     _commentIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _commentIndicator.center = CGPointMake(160, commentHeader.frame.origin.y + commentHeader.frame.size.height + PADDING);
@@ -265,6 +286,44 @@
     [_commentIndicator startAnimating];
     
     [self refreshContentSize];
+    
+    // dynamically load the status if they're logged in
+    if([KiiUser loggedIn]) {
+        KiiBucket *bucket = [Kii bucketWithName:BUCKET_ATTENDING];
+        KiiClause *clause1 = [KiiClause equals:@"user" value:[KiiUser currentUser].uuid];
+        KiiClause *clause2 = [KiiClause equals:@"session" value:[_session objectForKey:@"uuid"]];
+        KiiQuery *query = [KiiQuery queryWithClause:[KiiClause and:clause1, clause2, nil]];
+        [bucket executeQuery:query
+                   withBlock:^(KiiQuery *query, KiiBucket *bucket, NSArray *results, KiiQuery *nextQuery, NSError *error) {
+                       if(error == nil) {
+                           
+                           _confirmButton.enabled = TRUE;
+
+                           if([results count] > 0) {
+                               _confirmButton.title = @"No, I won't be going";
+
+                               KiiObject *o = [results lastObject];
+                               _attendingURI = o.objectURI;
+                           
+                           } else {
+                               _confirmButton.title = @"Yes, I will be going";
+                           }
+                           
+                       } else {
+                           // keep buttons disabled
+                           _confirmButton.enabled = FALSE;
+                       }
+                       [_loadingStatus stopAnimating];
+                   }];
+    }
+    
+    // otherwise, disable the button
+    else {
+        _confirmButton.title = @"Log in to subscribe";
+        _confirmButton.enabled = FALSE;
+        [_loadingStatus stopAnimating];
+    }
+
     
     // dynamically load the comments
     KiiBucket *bucket = [Kii bucketWithName:BUCKET_COMMENTS];
@@ -298,7 +357,6 @@
                        [_contentView addSubview:_noCommentLabel];
                        
                        [self refreshContentSize];
-                       
                    }
                }];
 
@@ -309,53 +367,92 @@
 {
     if([KiiUser loggedIn]) {
         
-        // TODO: set tint on load if this person's attending
-        // store in prefs by session id
-        // indicate pro/con on ScheduleViewController view using left bar
+        [KTLoader showLoader:@"Saving..."];
         
-        // TODO: update user when new comment posted if attending or had posted a comment
+        // need to create an 'attending' object
+        if(_attendingURI == nil) {
+            
+            KiiBucket *bucket = [Kii bucketWithName:BUCKET_ATTENDING];
+            KiiObject *o = [bucket createObject];
+            [o setObject:[KiiUser currentUser].uuid forKey:@"user"];
+            [o setObject:[_session objectForKey:@"uuid"] forKey:@"session"];
+            [o setObject:[_session objectForKey:@"title"] forKey:@"session_title"];
+            [o setObject:[_session objectForKey:@"track"] forKey:@"session_track"];
+            [o saveWithBlock:^(KiiObject *object, NSError *error) {
+                if(error == nil) {
+                    
+                    _confirmButton.title = @"No, I won't be going";
+                    _attendingURI = object.objectURI;
+                    
+                    // subscribe to comments
+                    NSString *topicName = [NSString stringWithFormat:@"%@-comment",[_session objectForKey:@"uuid"]];
+                    KiiTopic *topic = [Kii topicWithName:topicName];
+                    [KiiPushSubscription subscribe:topic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
+                        NSLog(@"Subscribed to comments: %@", error);
+                    }];
+                    
+                    // subscribe to session
+                    KiiTopic *sessionTopic = [Kii topicWithName:[_session objectForKey:@"uuid"]];
+                    [KiiPushSubscription subscribe:sessionTopic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
+                        NSLog(@"Subscribed to session: %@", error);
+                    }];
+                    
+                    [KTLoader showLoader:@"Confirmed!"
+                                animated:TRUE
+                           withIndicator:KTLoaderIndicatorSuccess
+                         andHideInterval:KTLoaderDurationAuto];
+                    
+                } else {
+                    [KTLoader showLoader:@"Error Saving"
+                                animated:TRUE
+                           withIndicator:KTLoaderIndicatorError
+                         andHideInterval:KTLoaderDurationAuto];
+                }
+            }];
+            
+        }
         
-        [_declineButton setTintColor:[UIColor grayColor]];
-        [_confirmButton setTintColor:nil];
-        
-        [KTLoader showLoader:@"Confirmed!"
-                    animated:TRUE
-               withIndicator:KTLoaderIndicatorSuccess
-             andHideInterval:KTLoaderDurationAuto];
+        else {
 
-    } else {
-        
-        [KTAlert showAlert:KTAlertTypeToast
-               withMessage:@"Log in to save your schedule and get alerts for your sessions!"
-               andDuration:KTAlertDurationLong];
+            // remove the session from cloud
+            KiiObject *o = [KiiObject objectWithURI:_attendingURI];
+            [o deleteWithBlock:^(KiiObject *object, NSError *error) {
+                if(error == nil) {
+                    
+                    _confirmButton.title = @"Yes, I will be going";
+                    _attendingURI = nil;
 
-        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
-        [self presentViewController:lvc animated:TRUE completion:nil];
+                    // un-subscribe from comments
+                    NSString *topicName = [NSString stringWithFormat:@"%@-comment",[_session objectForKey:@"uuid"]];
+                    KiiTopic *topic = [Kii topicWithName:topicName];
+                    [KiiPushSubscription unsubscribe:topic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
+                        NSLog(@"unsubscribed from comments: %@", error);
+                    }];
+                    
+                    // unsubscribe from session
+                    KiiTopic *sessionTopic = [Kii topicWithName:[_session objectForKey:@"uuid"]];
+                    [KiiPushSubscription unsubscribe:sessionTopic withBlock:^(KiiPushSubscription *subscription, NSError *error) {
+                        NSLog(@"unsubscribed to session: %@", error);
+                    }];
+                    
+
+                    [KTLoader showLoader:@"Declined"
+                                animated:TRUE
+                           withIndicator:KTLoaderIndicatorError
+                         andHideInterval:KTLoaderDurationAuto];
+                    
+                } else {
+                    [KTLoader showLoader:@"Error Saving"
+                                animated:TRUE
+                           withIndicator:KTLoaderIndicatorError
+                         andHideInterval:KTLoaderDurationAuto];
+                }
+            }];
+
+        
+        }
+
     }
-}
-
-- (IBAction) declineAttendance:(id)sender
-{
-    if([KiiUser loggedIn]) {
-
-        [_confirmButton setTintColor:[UIColor grayColor]];
-        [_declineButton setTintColor:nil];
-        
-        [KTLoader showLoader:@"Declined"
-                    animated:TRUE
-               withIndicator:KTLoaderIndicatorError
-             andHideInterval:KTLoaderDurationAuto];
-
-    } else {
-        
-        [KTAlert showAlert:KTAlertTypeToast
-               withMessage:@"Log in to save your schedule and get alerts for your sessions!"
-               andDuration:KTAlertDurationLong];
-
-        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
-        [self presentViewController:lvc animated:TRUE completion:nil];
-    }
-    
 }
 
 @end

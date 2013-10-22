@@ -93,13 +93,7 @@
                                     <constraint firstAttribute="height" constant="44" id="dAV-8j-h8U"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="No, I'm Not" width="120" id="MfG-Xl-t8f">
-                                        <connections>
-                                            <action selector="declineAttendance:" destination="jib-rG-e2b" id="gv2-yB-DBe"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="2o0-fh-lVa"/>
-                                    <barButtonItem title="Yes, I'm Going" width="120" id="blv-p9-UDg">
+                                    <barButtonItem enabled="NO" width="307" id="blv-p9-UDg">
                                         <connections>
                                             <action selector="confirmAttendance:" destination="jib-rG-e2b" id="8y2-cg-fDj"/>
                                         </connections>
@@ -110,7 +104,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="This si something" translatesAutoresizingMaskIntoConstraints="NO" id="J8m-5z-NRW">
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J8m-5z-NRW">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="289"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,6 +114,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TEQ-z5-xtm">
+                                <rect key="frame" x="150" y="472" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -127,6 +125,7 @@
                             <constraint firstItem="xZR-Ym-hHo" firstAttribute="top" secondItem="CZq-oB-y4T" secondAttribute="bottom" id="Lcr-pq-yas"/>
                             <constraint firstItem="tbO-D6-BuG" firstAttribute="top" secondItem="xZR-Ym-hHo" secondAttribute="bottom" id="Q7r-hV-fs0"/>
                             <constraint firstItem="mkg-a7-nNZ" firstAttribute="top" secondItem="tbO-D6-BuG" secondAttribute="bottom" id="bKC-RG-Tov"/>
+                            <constraint firstItem="mkg-a7-nNZ" firstAttribute="top" secondItem="TEQ-z5-xtm" secondAttribute="bottom" constant="12" id="qzw-gk-bSl"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
@@ -134,7 +133,7 @@
                         <outlet property="composeView" destination="J8m-5z-NRW" id="6p0-f5-boA"/>
                         <outlet property="confirmButton" destination="blv-p9-UDg" id="R8s-PW-5Ue"/>
                         <outlet property="contentView" destination="xZR-Ym-hHo" id="ye7-XG-igc"/>
-                        <outlet property="declineButton" destination="MfG-Xl-t8f" id="Kcf-tE-b6f"/>
+                        <outlet property="loadingStatus" destination="TEQ-z5-xtm" id="noX-0f-8tQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MFB-uC-Sde" userLabel="First Responder" sceneMemberID="firstResponder"/>

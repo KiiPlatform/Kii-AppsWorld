@@ -26,9 +26,7 @@
         [KTAlert showAlert:KTAlertTypeToast
                withMessage:@"Log in to start storing contacts!"
                andDuration:KTAlertDurationLong];
-        
-        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
-        [self presentViewController:lvc animated:TRUE completion:nil];
+
     }
 }
 

@@ -21,3 +21,4 @@
 #define BUCKET_SCHEDULE_CATEGORIES      @"categories"
 #define BUCKET_SCHEDULE_SESSIONS        @"sessions"
 #define BUCKET_COMMENTS                 @"comments"
+#define BUCKET_ATTENDING                @"attending"

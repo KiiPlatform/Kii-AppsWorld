@@ -50,13 +50,9 @@
         
         [sheet showFromTabBar:self.tabBarController.tabBar];
     } else {
-        
         [KTAlert showAlert:KTAlertTypeToast
                withMessage:@"Log in to post pictures!"
                andDuration:KTAlertDurationLong];
-
-        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
-        [self presentViewController:lvc animated:TRUE completion:nil];
     }
 }
 
@@ -134,14 +130,10 @@
         
         [_navItem setTitle:@"Create a Post"];
 
-    } else {
-        
+    } else {        
         [KTAlert showAlert:KTAlertTypeToast
                withMessage:@"Log in to start posting!"
                andDuration:KTAlertDurationLong];
-
-        KTLoginViewController *lvc = [[KTLoginViewController alloc] init];
-        [self presentViewController:lvc animated:TRUE completion:nil];
     }
 
 }

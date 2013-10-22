@@ -70,11 +70,30 @@
     return YES;
 }
 
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [Kii setAPNSDeviceToken:deviceToken];
+    
+    [KiiPushInstallation installWithBlock:^(KiiPushInstallation *installation, NSError *error) {
+        if(error == nil) {
+            NSLog(@"Push installed!");
+        } else {
+            NSLog(@"Error installing: %@", error);
+        }
+    }];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    application.applicationIconBadgeNumber = 0;
+}
+
 + (NSString *) applicationDocumentsDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *basePath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
     return basePath;
 }
-							
+
+
 @end
