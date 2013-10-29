@@ -17,7 +17,7 @@
 {
     if(buttonIndex != alertView.cancelButtonIndex) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://events.kii.com/events/appsworld-london-2013/app"]];
-    }
+    }    
 }
 
 - (void) checkForUpdate

@@ -250,6 +250,7 @@
 		CAEE8EDC18036ACA0091B22A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CAEE8EDE18036ACA0091B22A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CAEE8EFC18036ACA0091B22A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CAEF9DFD1820812E00FB46B6 /* doc_creation.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = doc_creation.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				CA5969201820440700DBBF37 /* html */,
+				CAEF9DFD1820812E00FB46B6 /* doc_creation.sh */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
