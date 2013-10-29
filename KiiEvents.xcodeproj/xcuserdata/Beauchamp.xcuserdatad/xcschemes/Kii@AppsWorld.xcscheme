@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAEE8ED618036ACA0091B22A"
-               BuildableName = "Kii@AppsWorld.app"
-               BlueprintName = "Kii@AppsWorld"
-               ReferencedContainer = "container:Kii@AppsWorld.xcodeproj">
+               BuildableName = "KiiEvents.app"
+               BlueprintName = "KiiEvents"
+               ReferencedContainer = "container:KiiEvents.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAEE8EFA18036ACA0091B22A"
                BuildableName = "Kii@AppsWorldTests.xctest"
-               BlueprintName = "Kii@AppsWorldTests"
-               ReferencedContainer = "container:Kii@AppsWorld.xcodeproj">
+               BlueprintName = "KiiEventsTests"
+               ReferencedContainer = "container:KiiEvents.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEE8ED618036ACA0091B22A"
-            BuildableName = "Kii@AppsWorld.app"
-            BlueprintName = "Kii@AppsWorld"
-            ReferencedContainer = "container:Kii@AppsWorld.xcodeproj">
+            BuildableName = "KiiEvents.app"
+            BlueprintName = "KiiEvents"
+            ReferencedContainer = "container:KiiEvents.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEE8ED618036ACA0091B22A"
-            BuildableName = "Kii@AppsWorld.app"
-            BlueprintName = "Kii@AppsWorld"
-            ReferencedContainer = "container:Kii@AppsWorld.xcodeproj">
+            BuildableName = "KiiEvents.app"
+            BlueprintName = "KiiEvents"
+            ReferencedContainer = "container:KiiEvents.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CAEE8ED618036ACA0091B22A"
-            BuildableName = "Kii@AppsWorld.app"
-            BlueprintName = "Kii@AppsWorld"
-            ReferencedContainer = "container:Kii@AppsWorld.xcodeproj">
+            BuildableName = "KiiEvents.app"
+            BlueprintName = "KiiEvents"
+            ReferencedContainer = "container:KiiEvents.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
