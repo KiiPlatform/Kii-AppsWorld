@@ -80,6 +80,13 @@
 {
     [KTLoader showLoader:@"Posting..."];
     
+    KiiUser *user = [KiiUser userWithUsername:@"demo" andPassword:@"password"];
+    [user performRegistrationWithBlock:^(KiiUser *user, NSError *error) {
+        if(error) {
+            
+        }
+    }];
+    
     KiiObject *obj = [[Kii bucketWithName:BUCKET_FEED] createObject];
     [obj setObject:[KiiUser currentUser].username forKey:@"username"];
     [obj setObject:_composeView.text forKey:@"message"];

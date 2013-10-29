@@ -71,6 +71,19 @@
     NSString *sysVersion = [[UIDevice currentDevice] systemVersion];
     NSString *locale = [[NSLocale preferredLanguages] objectAtIndex:0];
     [KiiAnalytics trackEvent:@"launch" withExtras:@{@"model": model, @"system_version": sysVersion, @"locale": locale}];
+    
+    
+    KiiUser *user = [KiiUser userWithUsername:@"myUser"
+                                  andPassword:@"myPassword"];
+    
+    [user performRegistrationWithBlock:^(KiiUser *user, NSError *error) {
+        if(error == nil ) {
+            // registration was successful
+        } else {
+            // something bad happened!
+        }
+    }];
+    
 
     // check for updates
     [self checkForUpdate];
